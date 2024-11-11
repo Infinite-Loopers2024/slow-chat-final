@@ -1,15 +1,17 @@
+import Link from "next/link";
+
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <div>
         <nav>
-          <a href=".">logo</a>
+          <Link href=".">logo</Link>
           <ul>
             <li>
-              <a href="\chat\">Chat</a>
+              <Link href="\chat\">Chat</Link>
             </li>
             <li>
-              <a href="\statistics\">Statistcs</a>
+              <Link href="\statistics\">Statistics</Link>
             </li>
           </ul>
         </nav>
