@@ -1,3 +1,5 @@
+import { createMessage } from "./action";
+
 export default function ChatPage() {
   return (
     <main className="container mx-auto pb-6 p-2 rounded-md bg-base-200 mt-2 h-[85lvh]">
@@ -11,14 +13,14 @@ export default function ChatPage() {
         </div>
         <button className="btn btn-secondary m-1 w-52">Fetch messages</button>
       </div>
-      <form className="flex items-center justify-end" action="submit">
+      <form className="flex items-center justify-end" action={createMessage}>
         <input
           className="input input-bordered input-warning w-full max-w-xs m-3"
           placeholder="type here"
           type="text"
           id="message"
         />
-        <button className="btn btn-secondary m-1 w-52">Send message</button>
+        <button className="btn btn-secondary m-1 w-52" type="submit">Send message</button>
       </form>
     </main>
   );
