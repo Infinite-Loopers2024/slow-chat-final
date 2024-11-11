@@ -1,14 +1,14 @@
-"use client";
-import React, { useState } from "react";
 
-export default function Form() {
+import React, { useState } from "react";
+type FormProps = {addMessage: (message: string) => void}
+export default function Form({addMessage}: FormProps) {
   const [input, setInput] = useState("");
-  const [message, setMessage] = useState<string[]>([]);
+ 
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setMessage((prevmessage) => [...prevmessage, input]);
-    console.log(message);
+    addMessage(input)
+    setInput("");
   };
   return (
     <div>
