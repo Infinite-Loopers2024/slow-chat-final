@@ -9,8 +9,7 @@ export default function LoginPage() {
         <label htmlFor="password">Password</label>
         <input type="text" name="" id="password" />
         <div>
-          <button className="">Join</button>
-          <button className="">Create</button>
+          <button className="btn ">Join</button>
         </div>
       </form>
     </div>
