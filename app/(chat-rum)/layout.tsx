@@ -4,7 +4,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <div>
-        <nav className="navbar bg-base-100">
+        <nav className="navbar bg-base-300">
           <div className="flex-1">
             <Link className="btn btn-ghost text-xl" href=".">
               logo
