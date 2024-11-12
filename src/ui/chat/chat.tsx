@@ -3,9 +3,19 @@ import { useState } from "react";
 import Form from "./form";
 import MessageBoard from "./message-board";
 import TokenCount from "./token-count";
+import msg from "../../fixtures/messages.json"
+
+type Message = {
+  id: string;
+  content: string;
+  userName: string;
+  timeStamp: string;
+};
 
 export default function ChatPage() {
    const [message, setMessage] = useState<string[]>([]);
+  const messages = msg as Message[]
+  console.log(messages)
   const addMessage = (newMessage: string) => {
     setMessage((prevmessage) => [...prevmessage, newMessage]);
   }
