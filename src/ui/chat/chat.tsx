@@ -24,7 +24,7 @@ export default function ChatPage() {
       <div className="flex items-center justify-end">
         <TokenCount />
       </div>
-      <Form addMessage={addMessage} />
+      <Form messages={messages} />
     </main>
   );
 }

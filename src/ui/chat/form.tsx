@@ -1,15 +1,24 @@
-import { revalidatePath } from "next/cache";
 import React from "react";
-// import { v4 } from "uuid";
+import { MessageType } from "./chat";
+import { v4 } from "uuid";
+import { revalidatePath } from "next/cache";
 
-export default function Form({ addMessage }: any) {
+export default function Form({ messages }: { messages: MessageType[] }) {
   const addMessages = async (formData: FormData) => {
-    "use server";
-    const messages = Object.fromEntries(formData.entries());
-    if (messages) {
-      addMessage({ content: messages.messages });
+    const content = formData.get("messages");
+    const id: string = v4();
+
+    if (content) {
+      const newMessage: MessageType = {
+        id: id,
+        content: content as string,
+        userName: "Peter String",
+        timeStamp: "2001",
+      };
+      messages.push(newMessage);
     }
     console.log(messages);
+    revalidatePath("/chat");
   };
 
   return (
