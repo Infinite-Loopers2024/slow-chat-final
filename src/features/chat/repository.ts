@@ -10,3 +10,5 @@ export function createRepository() {
     },
   };
 }
+
+export type Repository = ReturnType<typeof createRepository>;

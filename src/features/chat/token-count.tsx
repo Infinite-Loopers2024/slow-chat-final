@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { revalidateMessages } from "@/src/feature/chat/action";
+import { revalidateMessages } from "@/src/features/chat/action";
 
 export default function TokenCount() {
   return (
