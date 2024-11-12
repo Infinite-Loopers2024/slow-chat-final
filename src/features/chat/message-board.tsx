@@ -9,6 +9,7 @@ export default function MessageBoard({
 }: {
   messages: MessageType[];
 }) {
+  const currentUserId = "1"
   return (
     <>
       <div
@@ -19,7 +20,7 @@ export default function MessageBoard({
           <Message key={message.id} message={message} />
         ))}
       </div>
-      <TokenCount />
+      <TokenCount currentUserId = {currentUserId}/>
     </>
   );
 }

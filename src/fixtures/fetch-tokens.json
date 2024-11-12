@@ -1,0 +1,15 @@
+[
+ {
+  "id": "1",
+  "dailyToken": 1,
+  "weeklyToken": 2,
+  "userName": "Tomas"
+ },
+
+ {
+   "id": "2",
+   "dailyToken": 1,
+   "weeklyToken": 2,
+   "userName": "Peter"
+ }
+]
