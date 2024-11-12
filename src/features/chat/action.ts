@@ -1,10 +1,8 @@
 "use server";
 import { v4 } from "uuid";
-import { MessageType } from "./chat";
+import { MessageType } from "./type";
 import { revalidatePath } from "next/cache";
-import db from "../../fixtures/messages.json";
-
-const data = db;
+import { chatFeature } from "./instance";
 
 export async function addMessage(formData: FormData) {
   const content = formData.get("messages") as string;
@@ -16,6 +14,7 @@ export async function addMessage(formData: FormData) {
     return await createMessage({ id, content, userName, timeStamp });
   }
 }
+
 export async function createMessage(message: MessageType) {
   const { id, content, userName, timeStamp } = message;
   const newMessage: MessageType = {
@@ -24,11 +23,7 @@ export async function createMessage(message: MessageType) {
     userName: userName,
     timeStamp: timeStamp,
   };
-  data.push(newMessage);
-}
-
-export async function getAllMessages() {
-  return data;
+  await chatFeature.service.sendMessage(newMessage);
 }
 
 export async function revalidateMessages() {
