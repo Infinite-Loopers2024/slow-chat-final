@@ -6,7 +6,9 @@ type FormProps = { addMessage: (message: string) => void };
 export default function Form({ addMessage }: FormProps) {
   const addMessages = async (formData: FormData) => {
     const texts = formData.get("messages");
-    addMessage(texts as string);
+    if (texts) {
+      addMessage(texts as string);
+    }
   };
   return (
     <div>
