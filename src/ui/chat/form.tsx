@@ -1,25 +1,22 @@
+import React from "react";
+import { v4 } from "uuid";
 
-import React, { useState } from "react";
-type FormProps = {addMessage: (message: string) => void}
-export default function Form({addMessage}: FormProps) {
-  const [input, setInput] = useState("");
- 
+type FormProps = { addMessage: (message: string) => void };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    addMessage(input)
-    setInput("");
+export default function Form({ addMessage }: FormProps) {
+  const addMessages = async (formData: FormData) => {
+    const texts = formData.get("messages");
+    addMessage(texts as string);
   };
   return (
     <div>
-      <form className="flex items-center justify-end" onSubmit={handleSubmit}>
+      <form className="flex items-center justify-end" action={addMessages}>
         <input
           className="input input-bordered input-warning w-full max-w-xs m-3"
           placeholder="type here"
           type="text"
           id="message"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          name="messages"
         />
         <button className="btn btn-secondary m-1 w-52" type="submit">
           Send message
