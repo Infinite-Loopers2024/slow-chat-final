@@ -13,7 +13,7 @@ export async function ChatPage() {
   const messages = await chatFeature.service.getAllMessages()
 
   return (
-    <main className="container mx-auto pb-6 p-2 rounded-md bg-base-200 mt-2 h-[85lvh]">
+    <main className="container mx-auto pb-6 p-2 rounded-md bg-base-200 mt-2 h-[85lvh] prose">
       <MessageBoard messages={messages} />
       <div className="flex items-center justify-end"></div>
       <Form />

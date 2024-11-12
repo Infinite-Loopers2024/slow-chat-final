@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindTypography from "@tailwindcss/typography";
 
 export default {
   content: [
@@ -9,6 +10,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+
+  plugins: [tailwindTypography, require("daisyui")],
   daisyui: { themes: ["lemonade"] },
 } satisfies Config;
