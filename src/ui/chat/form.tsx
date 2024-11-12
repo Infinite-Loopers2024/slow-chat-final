@@ -1,24 +1,21 @@
 import React from "react";
 import { MessageType } from "./chat";
 import { v4 } from "uuid";
-import { revalidatePath } from "next/cache";
+import { addMessage } from "@/src/features/chat/action";
+
+//import { revalidatePath } from "next/cache";
 
 export default function Form({ messages }: { messages: MessageType[] }) {
   const addMessages = async (formData: FormData) => {
-    const content = formData.get("messages");
+    const content = formData.get("messages")  as string;
     const id: string = v4();
+    const userName = "Peter"
+    const timeStamp = new Date().toISOString()
 
     if (content) {
-      const newMessage: MessageType = {
-        id: id,
-        content: content as string,
-        userName: "Peter String",
-        timeStamp: "2001",
-      };
-      messages.push(newMessage);
+    await addMessage({id, content, userName, timeStamp})
     }
     console.log(messages);
-    revalidatePath("/chat");
   };
 
   return (
