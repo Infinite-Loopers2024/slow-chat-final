@@ -4,6 +4,8 @@ import { MessageType } from "../../ui/chat/chat";
 import { revalidatePath } from "next/cache";
 import db from "../../fixtures/messages.json";
 
+const data = db;
+
 export async function addMessage(formData: FormData) {
   const content = formData.get("messages") as string;
   const id: string = v4();
@@ -22,12 +24,14 @@ export async function createMessage(message: MessageType) {
     userName: userName,
     timeStamp: timeStamp,
   };
-  db.push(newMessage);
-  console.log("db pushed");
+  data.push(newMessage);
 }
 
-export function getAllMessages() {
-  const data = db;
-  revalidatePath("/chat");
-  return data;
+export async function getAllMessages() {
+ return data;
 }
+
+export async function revalidateMessages() {
+  revalidatePath("/chat")
+}
+ 

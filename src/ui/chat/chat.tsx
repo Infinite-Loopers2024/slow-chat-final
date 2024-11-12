@@ -1,8 +1,7 @@
-"use client";
+
 import Form from "./form";
 import MessageBoard from "./message-board";
-import TokenCount from "./token-count";
-import db from "../../fixtures/messages.json";
+import { getAllMessages } from "@/src/features/chat/action";
 
 export type MessageType = {
   id: string;
@@ -11,9 +10,9 @@ export type MessageType = {
   timeStamp: string;
 };
 
-export default function ChatPage() {
-  const messages = db as MessageType[];
-  console.log(messages);
+export default async function ChatPage() {
+  const messages = await getAllMessages()
+
 
   return (
     <main className="container mx-auto pb-6 p-2 rounded-md bg-base-200 mt-2 h-[85lvh]">
