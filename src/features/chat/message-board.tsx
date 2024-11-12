@@ -9,7 +9,7 @@ export default function MessageBoard({
 }: {
   messages: MessageType[];
 }) {
-  const currentUserId = "1"
+  const currentUserName = "Peter";
   return (
     <>
       <div
@@ -17,10 +17,14 @@ export default function MessageBoard({
         className="h-5/6 bg-base-100 rounded-md m-2 overflow-auto flex flex-col-reverse"
       >
         {messages.map((message) => (
-          <Message key={message.id} message={message} />
+          <Message
+            key={message.id}
+            message={message}
+            isCurrentUser={message.userName === currentUserName}
+          />
         ))}
       </div>
-      <TokenCount currentUserId = {currentUserId}/>
+      <TokenCount currentUserName={currentUserName} />
     </>
   );
 }

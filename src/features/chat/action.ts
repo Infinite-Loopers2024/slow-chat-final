@@ -8,7 +8,7 @@ import { chatFeature } from "./instance";
 export async function addMessage(formData: FormData) {
   const content = formData.get("messages") as string;
   const id: string = v4();
-  const userName = "Peteer";
+  const userName = "Peter";
   const timeStamp = new Date().toISOString();
 
   if (content) {
