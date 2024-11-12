@@ -1,7 +1,4 @@
-import React from "react";
 import { addMessage } from "@/src/features/chat/action";
-
-//import { revalidatePath } from "next/cache";
 
 export default function Form() {
   return (
