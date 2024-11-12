@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Form from "./form";
 import MessageBoard from "./message-board";
 import TokenCount from "./token-count";
@@ -13,7 +12,6 @@ export type MessageType = {
 };
 
 export default function ChatPage() {
-  const [message, setMessage] = useState<string[]>([]);
   const messages = db as MessageType[];
   console.log(messages);
 

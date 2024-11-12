@@ -1,16 +1,17 @@
+import { revalidatePath } from "next/cache";
 import React from "react";
-import { MessageType } from "./chat";
 // import { v4 } from "uuid";
 
-type FormProps = { addMessage: (message: string) => MessageType };
-
-export default function Form({ addMessage }: FormProps) {
+export default function Form({ addMessage }: any) {
   const addMessages = async (formData: FormData) => {
-    const texts = formData.get("messages");
-    if (texts) {
-      addMessage(texts as string);
+    "use server";
+    const messages = Object.fromEntries(formData.entries());
+    if (messages) {
+      addMessage({ content: messages.messages });
     }
+    console.log(messages);
   };
+
   return (
     <div>
       <form className="flex items-center justify-end" action={addMessages}>
