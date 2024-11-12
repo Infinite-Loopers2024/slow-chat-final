@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "content": "hello world",
+    "userName": "Peter",
+    "timeStamp": "2011-10-05T14:48:00.000Z"
+  },
+  {
+    "id": "2",
+    "content": "hello back",
+    "userName": "John",
+    "timeStamp": "2011-10-05T16:48:00.000Z"
+  }
+]

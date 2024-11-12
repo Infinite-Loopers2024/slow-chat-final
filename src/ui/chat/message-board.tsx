@@ -1,5 +1,6 @@
 import React from "react";
 import Message from "./message";
+import { timeStamp } from "console";
 
 export default function MessageBoard({ messages }: { messages: string[] }) {
   return (
