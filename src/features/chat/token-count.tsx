@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React from "react";
-import {revalidateMessages } from "@/src/features/chat/action";
+import { revalidateMessages } from "@/src/feature/chat/action";
 
 export default function TokenCount() {
   return (
@@ -8,7 +8,10 @@ export default function TokenCount() {
       <div id="counter" className="mr-20">
         token:3
       </div>
-      <button onClick={() => revalidateMessages()} className="btn btn-secondary m-1 w-52">
+      <button
+        onClick={() => revalidateMessages()}
+        className="btn btn-secondary m-1 w-52"
+      >
         Fetch messages
       </button>
     </>

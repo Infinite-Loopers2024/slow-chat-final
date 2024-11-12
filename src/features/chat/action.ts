@@ -1,6 +1,6 @@
 "use server";
 import { v4 } from "uuid";
-import { MessageType } from "../../ui/chat/chat";
+import { MessageType } from "./chat";
 import { revalidatePath } from "next/cache";
 import db from "../../fixtures/messages.json";
 
@@ -28,10 +28,9 @@ export async function createMessage(message: MessageType) {
 }
 
 export async function getAllMessages() {
- return data;
+  return data;
 }
 
 export async function revalidateMessages() {
-  revalidatePath("/chat")
+  revalidatePath("/chat");
 }
- 
