@@ -1,4 +1,4 @@
-import Navbar from "@/src/feature/chat/navbar";
+import Navbar from "@/src/features/chat/navbar";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (

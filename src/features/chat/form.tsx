@@ -1,5 +1,5 @@
 import React from "react";
-import { addMessage } from "@/src/feature/chat/action";
+import { addMessage } from "@/src/features/chat/action";
 
 //import { revalidatePath } from "next/cache";
 
