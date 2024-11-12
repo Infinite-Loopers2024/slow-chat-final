@@ -25,3 +25,9 @@ export async function createMessage(message: MessageType) {
   db.push(newMessage);
   console.log("db pushed");
 }
+
+export function getAllMessages() {
+  const data = db;
+  revalidatePath("/chat");
+  return data;
+}
