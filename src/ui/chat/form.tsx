@@ -1,7 +1,8 @@
 import React from "react";
+import { MessageType } from "./chat";
 // import { v4 } from "uuid";
 
-type FormProps = { addMessage: (message: string) => void };
+type FormProps = { addMessage: (message: string) => MessageType };
 
 export default function Form({ addMessage }: FormProps) {
   const addMessages = async (formData: FormData) => {

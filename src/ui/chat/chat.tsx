@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import { useState } from "react";
 import Form from "./form";
 import MessageBoard from "./message-board";
 import TokenCount from "./token-count";
-import msg from "../../fixtures/messages.json"
+import db from "../../fixtures/messages.json";
 
-type Message = {
+export type MessageType = {
   id: string;
   content: string;
   userName: string;
@@ -13,15 +13,16 @@ type Message = {
 };
 
 export default function ChatPage() {
-   const [message, setMessage] = useState<string[]>([]);
-  const messages = msg as Message[]
-  console.log(messages)
-  const addMessage = (newMessage: string) => {
-    setMessage((prevmessage) => [...prevmessage, newMessage]);
-  }
-   return (
+  const [message, setMessage] = useState<string[]>([]);
+  const messages = db as MessageType[];
+  console.log(messages);
+
+  const addMessage = (newMessage: MessageType) => {
+    db.push(newMessage);
+  };
+  return (
     <main className="container mx-auto pb-6 p-2 rounded-md bg-base-200 mt-2 h-[85lvh]">
-      <MessageBoard messages={message} />
+      <MessageBoard messages={messages} />
       <div className="flex items-center justify-end">
         <TokenCount />
       </div>
