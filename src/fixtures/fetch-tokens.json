@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "dailyToken": 1,
+    "dailyToken": 0,
     "weeklyToken": 2,
     "userId": "7539a68c-9373-42c1-8ec1-5b6ea9e77016",
     "latestFetchTime":"2024-10-05T16:48:00.000Z"
@@ -9,9 +9,9 @@
 
   {
     "id": "2",
-    "dailyToken": 1,
+    "dailyToken": 0,
     "weeklyToken": 2,
     "userId": "9e272678-02e9-445c-a77a-82122fada7da",
-    "latestFetchTime":"2024-10-05T16:48:00.000Z"
+    "latestFetchTime":"2024-11-13T16:48:00.000Z"
   }
 ]

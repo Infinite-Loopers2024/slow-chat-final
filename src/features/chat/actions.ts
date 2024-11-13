@@ -42,3 +42,9 @@ export async function onColdown(timeStamp: string) {
   date.toISOString();
   return timeStamp > date.toISOString();
 }
+
+export async function handleTokens() {
+  await chatFeature.service.refillDailyToken(currentUserId);
+  const totalTokens = await chatFeature.service.getAllUserTokens(currentUserId);
+  return totalTokens
+}

@@ -34,5 +34,8 @@ export function createService(repository: Repository) {
     async getFetchedDate(userId: string) {
       return repository.getFetchedDate(userId);
     },
+    async refillDailyToken(userId: string) {
+      return repository.refillDailyToken(userId);
+    },
   };
 }

@@ -42,6 +42,17 @@ export function createRepository() {
       );
       return currentUser!.latestFetchTime;
     },
+    async refillDailyToken(userId: string) {
+      const currentUser = tokenData.find(
+        (tokenObject) => userId === tokenObject.userId
+      );
+      const fetchedDate = new Date(currentUser!.latestFetchTime);
+      const fetchedDay = fetchedDate.getDate();
+      const todaysDate = new Date().getDate();
+      if (fetchedDay < todaysDate) {
+        currentUser!.dailyToken = 1;
+      }
+    },
   };
 }
 

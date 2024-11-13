@@ -2,7 +2,7 @@ import { MessageType } from "../type";
 import Message from "./message";
 import TokenCount from "./token-count";
 import { chatFeature } from "../instance";
-//import { timeStamp } from "console";
+import { handleTokens } from "../actions";
 
 export default async function MessageBoard({
   messages,
@@ -11,7 +11,7 @@ export default async function MessageBoard({
 }) {
   const currentUserName = "Peter";
   const currentUserId = "9e272678-02e9-445c-a77a-82122fada7da";
-  const totalTokens = await chatFeature.service.getAllUserTokens(currentUserId);
+  const totalTokens = await handleTokens();
   return (
     <>
       <div
