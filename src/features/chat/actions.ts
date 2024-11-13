@@ -26,7 +26,6 @@ export async function revalidateMessages() {
 }
 
 export async function getFetchedMessages() {
-  console.log(new Date().toISOString());
   const messages = await chatFeature.service.getAllMessages();
   const fetchedDate = await chatFeature.service.getFetchedDate(currentUserId);
 
@@ -36,10 +35,10 @@ export async function getFetchedMessages() {
 
   return fetchedMessages;
 }
+
 export async function onColdown(timeStamp: string) {
-  const date = new Date().toISOString();
-  const currentDate = new Date(date);
-  currentDate.setHours(currentDate.getHours() - 1);
-  currentDate.toISOString();
-  return timeStamp > currentDate.toString();
+  const date = new Date();
+  date.setHours(date.getHours() - 1);
+  date.toISOString();
+  return timeStamp > date.toISOString();
 }
