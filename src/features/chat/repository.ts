@@ -30,6 +30,13 @@ export function createRepository() {
         currentUser.weeklyToken -= 1;
       }
     },
+    async updateFetchTime(userId: string) {
+      const currentUser = tokenData.find(
+        (tokenObject) => userId === tokenObject.userId
+      );
+      currentUser!.latestFetchTime = new Date().toISOString();
+      console.log(currentUser?.latestFetchTime);
+    },
   };
 }
 

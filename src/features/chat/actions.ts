@@ -14,13 +14,14 @@ export async function addMessage(formData: FormData) {
 
 export async function revalidateMessages() {
   const currentUserId = "9e272678-02e9-445c-a77a-82122fada7da";
+  const newTime = await chatFeature.service.updateFetchTime(currentUserId);
+  console.log(newTime);
   const tokens = await chatFeature.service.getAllUserTokens(currentUserId);
   if (!tokens) {
     return;
   }
   await chatFeature.service.reduceUserToken(currentUserId);
-  const fetchedMessages =  await getFetchedMessages(new Date().toISOString())
-  console.log(fetchedMessages)
+  await getFetchedMessages(new Date().toISOString());
   revalidatePath("/chat");
 }
 

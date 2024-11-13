@@ -28,5 +28,8 @@ export function createService(repository: Repository) {
     async reduceUserToken(userId: string) {
       repository.reduceUserTokens(userId);
     },
+    async updateFetchTime(userId: string) {
+      repository.updateFetchTime(userId);
+    },
   };
 }
