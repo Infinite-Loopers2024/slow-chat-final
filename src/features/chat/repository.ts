@@ -36,11 +36,12 @@ export function createRepository() {
       );
       currentUser!.latestFetchTime = new Date().toISOString();
     },
-    async getFetchedDate(userId: string){
-        const date = tokenData.find(
-          (tokenObject) => userId === tokenObject.latestFetchTime
-        );
-    }
+    async getFetchedDate(userId: string) {
+      const currentUser = tokenData.find(
+        (tokenObject) => userId === tokenObject.userId
+      );
+      return currentUser!.latestFetchTime;
+    },
   };
 }
 

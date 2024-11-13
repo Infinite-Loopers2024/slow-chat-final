@@ -13,7 +13,7 @@ export async function addMessage(formData: FormData) {
 }
 
 export async function revalidateMessages() {
-  const currentUserId = "9e272678-02e9-445c-a77a-82122fada7da";
+  const currentUserId = "7539a68c-9373-42c1-8ec1-5b6ea9e77016";
   const newTime = await chatFeature.service.updateFetchTime(currentUserId);
   console.log(newTime);
   const tokens = await chatFeature.service.getAllUserTokens(currentUserId);
@@ -64,8 +64,4 @@ export async function getFetchedMessages(fetchedDate: string) {
   );
 
   return fetchedMessages;
-}
-export async function getFetchedDate(date: string) {
-  const fetchedDate = await chatFeature.service.getFetchedDateService();
-
 }
