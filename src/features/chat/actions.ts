@@ -19,5 +19,17 @@ export async function revalidateMessages() {
     return;
   }
   await chatFeature.service.reduceUserToken(currentUserId);
+  calculateTimeDifference(new Date());
   revalidatePath("/chat");
+}
+
+export async function calculateTimeDifference(date: Date) {
+  const messages = await chatFeature.service.getAllMessages();
+  const dates = messages.map((message) => {
+    return message.timeStamp;
+  });
+  const messageDate = dates.map((test) => {
+    return test.slice(0, 10);
+  });
+  console.log(messageDate);
 }
