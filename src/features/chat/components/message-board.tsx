@@ -23,6 +23,7 @@ export default async function MessageBoard({
             key={message.id}
             message={message}
             isCurrentUser={message.userName === currentUserName}
+            time={message.timeStamp.slice(11,16)}
           />
         ))}
       </div>

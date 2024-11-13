@@ -4,9 +4,11 @@ import { MessageType } from "../type";
 export default async function Message({
   message,
   isCurrentUser,
+  time
 }: {
   message: MessageType;
   isCurrentUser: boolean;
+  time: string
 }) {
   const { userName, content } = message;
   const coldown = await onColdown(message.timeStamp);
@@ -23,6 +25,7 @@ export default async function Message({
         >
           <p className="">{coldown ? "" : content}</p>
         </div>
+        <p className="">{coldown ? "" : time}</p>
       </div>
     </div>
   );
