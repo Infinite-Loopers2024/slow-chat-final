@@ -1,4 +1,4 @@
-import { addMessage } from "@/src/features/chat/action";
+import { addMessage } from "@/src/features/chat/actions";
 
 export default function Form() {
   return (
@@ -8,8 +8,8 @@ export default function Form() {
           className="input input-bordered input-warning w-full max-w-xs m-3"
           placeholder="type here"
           type="text"
-          id="message"
-          name="messages"
+          id="content"
+          name="content"
         />
         <button className="btn btn-secondary m-1 w-52" type="submit">
           Send message
