@@ -1,10 +1,10 @@
 import Form from "./form";
-import { chatFeature } from "../instance";
 import MessageBoard from "./message-board";
+import { getFetchedMessages } from "../actions";
 
 export async function ChatPage() {
-  const messages = await chatFeature.service.getAllMessages();
-
+  const date = "2024-10-05T16:48:00.000Z";
+  const messages = await getFetchedMessages(date)
   return (
     <main className="container mx-auto p-2 rounded-md bg-base-200 mt-2 h-[85lvh] prose">
       <MessageBoard messages={messages} />

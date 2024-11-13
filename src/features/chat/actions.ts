@@ -19,7 +19,8 @@ export async function revalidateMessages() {
     return;
   }
   await chatFeature.service.reduceUserToken(currentUserId);
-  calculateTimeDifference(new Date());
+  const fetchedMessages =  await getFetchedMessages(new Date().toISOString())
+  console.log(fetchedMessages)
   revalidatePath("/chat");
 }
 
@@ -52,5 +53,14 @@ export async function calculateTimeDifference(currentDate: Date) {
 
   console.log(approvedDates);
   console.log(cooldownDates);
-  
+}
+
+export async function getFetchedMessages(fetchedDate: string) {
+  const messages = await chatFeature.service.getAllMessages();
+
+  const fetchedMessages = messages.filter(
+    (message) => message.timeStamp < fetchedDate
+  );
+
+  return fetchedMessages;
 }
