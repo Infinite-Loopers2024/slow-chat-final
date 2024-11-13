@@ -35,8 +35,12 @@ export function createRepository() {
         (tokenObject) => userId === tokenObject.userId
       );
       currentUser!.latestFetchTime = new Date().toISOString();
-      console.log(currentUser?.latestFetchTime);
     },
+    async getFetchedDate(userId: string){
+        const date = tokenData.find(
+          (tokenObject) => userId === tokenObject.latestFetchTime
+        );
+    }
   };
 }
 

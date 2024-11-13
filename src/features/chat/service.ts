@@ -31,5 +31,8 @@ export function createService(repository: Repository) {
     async updateFetchTime(userId: string) {
       repository.updateFetchTime(userId);
     },
+    async getFetchedDateService(userId: string) {
+      repository.getFetchedDate(userId);
+    },
   };
 }

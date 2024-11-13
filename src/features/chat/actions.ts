@@ -65,3 +65,7 @@ export async function getFetchedMessages(fetchedDate: string) {
 
   return fetchedMessages;
 }
+export async function getFetchedDate(date: string) {
+  const fetchedDate = await chatFeature.service.getFetchedDateService();
+
+}
