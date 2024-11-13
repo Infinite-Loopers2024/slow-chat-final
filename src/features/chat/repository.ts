@@ -46,13 +46,20 @@ export function createRepository() {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      const fetchedDate = new Date(currentUser!.latestFetchTime);
-      const fetchedDay = fetchedDate.getDate();
-      const todaysDate = new Date().getDate();
-      if (fetchedDay < todaysDate) {
+      const fetchedDate = currentUser!.latestFetchTime;
+      const fetchedDay = fetchedDate
+      const todaysDate = new Date().toISOString()
+
+      if (fetchedDay.slice(0, 10) < todaysDate.slice(0, 10)) {
         currentUser!.dailyToken = 1;
       }
     },
+    async refillWeeklyToken(userId: string){
+      const currentUser = tokenData.find(
+        (tokenObject) => userId === tokenObject.userId
+      );
+      currentUser!.weeklyToken = 2
+    }
   };
 }
 

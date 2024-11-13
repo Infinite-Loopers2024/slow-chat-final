@@ -37,5 +37,8 @@ export function createService(repository: Repository) {
     async refillDailyToken(userId: string) {
       return repository.refillDailyToken(userId);
     },
+    async refillWeeklyToken(userId: string){
+      return repository.refillWeeklyToken(userId)
+    }
   };
 }

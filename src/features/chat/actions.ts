@@ -44,6 +44,10 @@ export async function onColdown(timeStamp: string) {
 }
 
 export async function handleTokens() {
+  const date = new Date("2024-11-16T00:00:01").getDay()
+  if(date === 0){
+    await chatFeature.service.refillWeeklyToken(currentUserId)
+  }
   await chatFeature.service.refillDailyToken(currentUserId);
   const totalTokens = await chatFeature.service.getAllUserTokens(currentUserId);
   return totalTokens
