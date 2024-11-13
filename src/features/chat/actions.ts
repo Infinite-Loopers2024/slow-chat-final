@@ -24,12 +24,19 @@ export async function revalidateMessages() {
 }
 
 export async function calculateTimeDifference(date: Date) {
+  const approvedMessages = [];
+
   const messages = await chatFeature.service.getAllMessages();
+  const todaysDate = date;
   const dates = messages.map((message) => {
     return message.timeStamp;
   });
   const messageDate = dates.map((test) => {
-    return test.slice(0, 10);
+    return test.slice(11, 19);
   });
-  console.log(messageDate);
+  for (let i = 0; i < dates.length; i++) {
+    if (dates[i] < todaysDate.toString()) approvedMessages.push(dates[i]);
+  }
+
+  console.log(approvedMessages);
 }
