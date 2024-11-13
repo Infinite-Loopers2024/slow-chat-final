@@ -13,9 +13,9 @@ export function createRepository() {
     async sendMessage(message: MessageType) {
       return data.push(message);
     },
-    async getAllUserTokens(userName: string) {
+    async getAllUserTokens(userId: string) {
       const currentUser = tokenData.find(
-        (tokenObject) => userName === tokenObject.userName
+        (tokenObject) => userId === tokenObject.userId
       );
       const totalTokens = currentUser!.dailyToken + currentUser!.weeklyToken;
       return totalTokens;

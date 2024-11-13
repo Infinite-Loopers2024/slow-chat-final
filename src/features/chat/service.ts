@@ -8,20 +8,22 @@ export function createService(repository: Repository) {
       return repository.getAllMessages();
     },
     async sendMessage(content: string) {
-      const id: string = v4();
+      const id = v4();
+      const userId = "9e272678-02e9-445c-a77a-82122fada7da";
       const userName = "Peter";
       const timeStamp = new Date().toISOString();
 
       const message: MessageType = {
         id: id,
         content: content,
+        userId: userId,
         userName: userName,
         timeStamp: timeStamp,
       };
       return repository.sendMessage(message);
     },
-    async getAllUserTokens(userName: string) {
-      return repository.getAllUserTokens(userName);
+    async getAllUserTokens(userId: string) {
+      return repository.getAllUserTokens(userId);
     },
   };
 }
