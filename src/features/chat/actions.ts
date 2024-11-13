@@ -23,20 +23,34 @@ export async function revalidateMessages() {
   revalidatePath("/chat");
 }
 
-export async function calculateTimeDifference(date: Date) {
-  const approvedMessages = [];
+export async function calculateTimeDifference(currentDate: Date) {
+  const approvedDates = [];
+  const cooldownDates = [];
 
   const messages = await chatFeature.service.getAllMessages();
-  const todaysDate = date;
+  const currentDateString = currentDate.toISOString();
   const dates = messages.map((message) => {
     return message.timeStamp;
   });
-  const messageDate = dates.map((test) => {
-    return test.slice(11, 19);
-  });
+
+  const datesToCheck = [];
+
   for (let i = 0; i < dates.length; i++) {
-    if (dates[i] < todaysDate.toString()) approvedMessages.push(dates[i]);
+    const date = new Date(dates[i]);
+    date.setHours(date.getHours() + 1);
+    const updatedDate = date.toISOString();
+    datesToCheck.push(updatedDate);
   }
 
-  console.log(approvedMessages);
+  for (let j = 0; j < datesToCheck.length; j++) {
+    if (datesToCheck[j] < currentDateString) {
+      approvedDates.push(datesToCheck[j]);
+    } else {
+      cooldownDates.push(datesToCheck[j]);
+    }
+  }
+
+  console.log(approvedDates);
+  console.log(cooldownDates);
+  
 }
