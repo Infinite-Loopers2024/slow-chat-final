@@ -1,4 +1,4 @@
-import { MessageType } from "./chat";
+import { MessageType } from "./components/chat";
 
 export default function Message({
   message,

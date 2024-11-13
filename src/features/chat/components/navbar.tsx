@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navbar() {
+export function Navbar() {
   return (
     <nav className="navbar bg-base-300">
       <div className="flex-1">

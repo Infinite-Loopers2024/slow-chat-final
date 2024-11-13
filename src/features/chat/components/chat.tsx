@@ -1,5 +1,5 @@
 import Form from "./form";
-import { chatFeature } from "./instance";
+import { chatFeature } from "../instance";
 import MessageBoard from "./message-board";
 
 export type MessageType = {
