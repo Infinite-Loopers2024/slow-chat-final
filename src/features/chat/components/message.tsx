@@ -1,6 +1,7 @@
+import { onColdown } from "../actions";
 import { MessageType } from "../type";
 
-export default function Message({
+export default async function Message({
   message,
   isCurrentUser,
 }: {
@@ -8,7 +9,7 @@ export default function Message({
   isCurrentUser: boolean;
 }) {
   const { userName, content } = message;
-
+  const coldown = await onColdown(message.timeStamp);
   return (
     <div className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">
@@ -20,7 +21,7 @@ export default function Message({
               : "chat-bubble chat-bubble-secondary"
           }
         >
-          <p className="">{content}</p>
+          <p className="">{coldown ? "" : content}</p>
         </div>
       </div>
     </div>
