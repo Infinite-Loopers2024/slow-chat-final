@@ -25,5 +25,8 @@ export function createService(repository: Repository) {
     async getAllUserTokens(userId: string) {
       return repository.getAllUserTokens(userId);
     },
+    async reduceUserToken(userId: string){
+      repository.reduceUserTokens(userId)
+    }
   };
 }
