@@ -1,12 +1,15 @@
 export default function LoginForm() {
   return (
-    <form action="submit">
+    <form
+      action="submit"
+      className="container mx-auto my-52 flex flex-col bg-base-200 p-3 rounded-md"
+    >
       <label htmlFor="user-name">Username</label>
-      <input type="text" name="" id="user-name" />
+      <input type="text" name="" id="user-name" required />
       <label htmlFor="password">Password</label>
-      <input type="text" name="" id="password" />
+      <input type="text" name="" id="password" required />
       <div>
-        <button className="btn ">Join</button>
+        <button className="btn my-2 bg-base-300">Join</button>
       </div>
     </form>
   );
