@@ -11,7 +11,7 @@ export function createService(repository: Repository) {
       const id: string = v4();
       const userName = "Peter";
       const timeStamp = new Date().toISOString();
-      
+
       const message: MessageType = {
         id: id,
         content: content,
@@ -19,6 +19,9 @@ export function createService(repository: Repository) {
         timeStamp: timeStamp,
       };
       return repository.sendMessage(message);
+    },
+    async getAllUserTokens(userName: string) {
+      return repository.getAllUserTokens(userName);
     },
   };
 }

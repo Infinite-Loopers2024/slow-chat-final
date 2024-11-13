@@ -2,14 +2,18 @@ import React from "react";
 import { MessageType } from "../type";
 import Message from "./message";
 import TokenCount from "./token-count";
+import { chatFeature } from "../instance";
 //import { timeStamp } from "console";
 
-export default function MessageBoard({
+export default async function MessageBoard({
   messages,
 }: {
   messages: MessageType[];
 }) {
   const currentUserName = "Peter";
+  const totalTokens = await chatFeature.service.getAllUserTokens(
+    currentUserName
+  );
   return (
     <>
       <div
@@ -24,7 +28,7 @@ export default function MessageBoard({
           />
         ))}
       </div>
-      <TokenCount currentUserName={currentUserName} />
+      <TokenCount totalTokens={totalTokens} />
     </>
   );
 }

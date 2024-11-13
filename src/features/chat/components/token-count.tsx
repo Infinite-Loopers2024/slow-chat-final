@@ -1,18 +1,12 @@
 "use client";
 import React from "react";
 import { revalidateMessages } from "@/src/features/chat/actions";
-import tokens from "../../../fixtures/fetch-tokens.json";
 
-export default function TokenCount({
-  currentUserName,
-}: {
-  currentUserName: string;
-}) {
-  const currentUser = tokens.find((user) => user.userName === currentUserName);
+export default function TokenCount({ totalTokens }: { totalTokens: number }) {
   return (
     <>
       <div id="counter" className="mr-20">
-        token: {currentUser!.dailyToken + currentUser!.weeklyToken}
+        token: {totalTokens}
       </div>
       <button
         onClick={() => revalidateMessages()}
