@@ -2,13 +2,6 @@ import Form from "./form";
 import { chatFeature } from "../instance";
 import MessageBoard from "./message-board";
 
-export type MessageType = {
-  id: string;
-  content: string;
-  userName: string;
-  timeStamp: string;
-};
-
 export async function ChatPage() {
   const messages = await chatFeature.service.getAllMessages();
 

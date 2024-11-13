@@ -7,10 +7,13 @@ import { chatFeature } from "./instance";
 
 export async function addMessage(formData: FormData) {
   const content = formData.get("messages") as string;
+  // servicelagret -->
   const id: string = v4();
   const userName = "Peter";
   const timeStamp = new Date().toISOString();
+  // end
 
+  // !check and early return
   if (content) {
     const newMessage: MessageType = {
       id: id,

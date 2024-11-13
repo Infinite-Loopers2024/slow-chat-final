@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageType } from "./chat";
+import { MessageType } from "../type";
 import Message from "./message";
 import TokenCount from "./token-count";
 //import { timeStamp } from "console";
