@@ -7,10 +7,10 @@ export async function onCooldown(timeStamp: string) {
 
 export function calculateDailyTokens(
   rawLatestFetchedDate: string,
-  rawCurrentDate: string
+  rawCurrentDate: Date
 ) {
   const latestFetchedDate = rawLatestFetchedDate.split("T");
-  const currentDate = rawCurrentDate.split("T");
+  const currentDate = rawCurrentDate.toISOString().split("T");
   if (latestFetchedDate[0] === currentDate[0]) {
     return 0;
   }
@@ -37,7 +37,7 @@ export function calculateWeeklyTokens(fetchDates: string[]) {
 
 export function calculateTotalTokens(
   fetchDates: string[],
-  rawCurrentDate: string
+  rawCurrentDate: Date
 ) {
   const weeklyTokens = calculateWeeklyTokens(fetchDates);
 
@@ -47,4 +47,15 @@ export function calculateTotalTokens(
   );
 
   return weeklyTokens + dailyTokens;
+}
+
+export function getDateOfLatestSunday(currentDate: Date) {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const date = currentDate.getDate();
+  const day = currentDate.getDay();
+
+  const dateOfLatestSunday = currentDate.setDate(date - day);
+
+  return new Date(year, month, dateOfLatestSunday).toISOString();
 }
