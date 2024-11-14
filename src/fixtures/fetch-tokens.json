@@ -1,17 +1,15 @@
 [
   {
     "id": "1",
-    "dailyToken": 0,
-    "weeklyToken": 0,
-    "userId": "7539a68c-9373-42c1-8ec1-5b6ea9e77016",
-    "latestFetchTime":"2024-10-05T16:48:00.000Z"
-  },
-
-  {
-    "id": "2",
-    "dailyToken": 0,
-    "weeklyToken": 0,
-    "userId": "9e272678-02e9-445c-a77a-82122fada7da",
-    "latestFetchTime":"2024-10-14T16:48:00.000Z"
+    "userFetches": [
+      {
+        "userId": "7539a68c-9373-42c1-8ec1-5b6ea9e77016",
+        "fetches": ["2024-10-05T16:48:00.000Z", "2024-10-05T16:48:00.000Z"]
+      },
+      {
+        "userId": "7539a68c-9373-42c1-8ec1-5b6ea9e77016",
+        "fetchTime": "2024-10-06T17:48:00.000Z"
+      }
+    ]
   }
 ]
