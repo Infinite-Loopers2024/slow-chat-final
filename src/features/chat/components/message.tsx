@@ -1,19 +1,19 @@
-import { onColdown } from "../actions";
+import { onCooldown } from "../logic";
 import { MessageType } from "../type";
 
 export default async function Message({
   message,
   isCurrentUser,
-  time
+  time,
 }: {
   message: MessageType;
   isCurrentUser: boolean;
-  time: string
+  time: string;
 }) {
   const { userName, content } = message;
-  const coldown = await onColdown(message.timeStamp);
+  const cooldown = await onCooldown(message.timeStamp);
   return (
-    <div className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
+    <section className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">
         {userName}
         <div
@@ -23,10 +23,10 @@ export default async function Message({
               : "chat-bubble chat-bubble-secondary"
           }
         >
-          <p className="">{coldown ? "" : content}</p>
+          <p>{cooldown ? "" : content}</p>
         </div>
-        <p className="">{coldown ? "" : time}</p>
+        <p>{cooldown ? "" : time}</p>
       </div>
-    </div>
+    </section>
   );
 }

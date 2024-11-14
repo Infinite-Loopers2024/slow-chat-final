@@ -36,13 +36,6 @@ export async function getFetchedMessages() {
   return fetchedMessages;
 }
 
-export async function onColdown(timeStamp: string) {
-  const date = new Date();
-  date.setHours(date.getHours() - 1);
-  date.toISOString();
-  return timeStamp > date.toISOString();
-}
-
 export async function handleTokens() {
   const date = new Date("2024-11-16T00:00:01").getDay()
   if(date === 0){
