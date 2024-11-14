@@ -28,8 +28,8 @@ export function createService(repository: Repository) {
     async reduceUserToken(userId: string) {
       repository.reduceUserTokens(userId);
     },
-    async updateFetchTime(userId: string) {
-      repository.updateFetchTime(userId);
+    async setFetchTime(userId: string) {
+      repository.setFetchTime(userId);
     },
     async getFetchedDate(userId: string) {
       return repository.getFetchedDate(userId);
@@ -37,8 +37,8 @@ export function createService(repository: Repository) {
     async refillDailyToken(userId: string) {
       return repository.refillDailyToken(userId);
     },
-    async refillWeeklyToken(userId: string){
-      return repository.refillWeeklyToken(userId)
-    }
+    async refillWeeklyToken(userId: string) {
+      return repository.refillWeeklyToken(userId);
+    },
   };
 }

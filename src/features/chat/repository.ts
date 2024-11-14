@@ -30,11 +30,11 @@ export function createRepository() {
         currentUser.weeklyToken -= 1;
       }
     },
-    async updateFetchTime(userId: string) {
+    async setFetchTime(userId: string) {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      currentUser!.latestFetchTime = new Date().toISOString();
+      currentUser!.latestFetchTime.push(new Date().toISOString());
     },
     async getFetchedDate(userId: string) {
       const currentUser = tokenData.find(
@@ -47,9 +47,10 @@ export function createRepository() {
         (tokenObject) => userId === tokenObject.userId
       );
       const fetchedDate = currentUser!.latestFetchTime;
+      const fetchedDay = fetchedDate;
       const todaysDate = new Date().toISOString();
 
-      if (fetchedDate.slice(0, 10) < todaysDate.slice(0, 10)) {
+      if (fetchedDay.slice(0, 10) < todaysDate.slice(0, 10)) {
         currentUser!.dailyToken = 1;
       }
     },

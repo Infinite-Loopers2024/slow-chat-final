@@ -14,7 +14,7 @@ export async function addMessage(formData: FormData) {
 }
 
 export async function revalidateMessages() {
-  await chatFeature.service.updateFetchTime(currentUserId);
+  await chatFeature.service.setFetchTime(currentUserId);
 
   const tokens = await chatFeature.service.getAllUserTokens(currentUserId);
   if (!tokens) {
@@ -37,11 +37,11 @@ export async function getFetchedMessages() {
 }
 
 export async function handleTokens() {
-  const date = new Date("2024-11-16T00:00:01").getDay()
-  if(date === 0){
-    await chatFeature.service.refillWeeklyToken(currentUserId)
+  const date = new Date("2024-11-16T00:00:01").getDay();
+  if (date === 0) {
+    await chatFeature.service.refillWeeklyToken(currentUserId);
   }
   await chatFeature.service.refillDailyToken(currentUserId);
   const totalTokens = await chatFeature.service.getAllUserTokens(currentUserId);
-  return totalTokens
+  return totalTokens;
 }
