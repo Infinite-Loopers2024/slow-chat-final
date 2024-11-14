@@ -13,58 +13,23 @@ export function createRepository() {
     async sendMessage(message: MessageType) {
       return data.push(message);
     },
-    async getAllUserTokens(userId: string) {
+    async setFetchedTime(userId: string) {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      const totalTokens = currentUser!.dailyToken + currentUser!.weeklyToken;
-      return totalTokens;
-    },
-    async reduceUserTokens(userId: string) {
-      const currentUser = tokenData.find(
-        (tokenObject) => userId === tokenObject.userId
-      );
-      if (currentUser?.dailyToken) {
-        currentUser.dailyToken = 0;
-      } else if (currentUser?.weeklyToken) {
-        currentUser.weeklyToken -= 1;
-      }
-    },
-    async setFetchTime(userId: string) {
-      const currentUser = tokenData.find(
-        (tokenObject) => userId === tokenObject.userId
-      );
-      currentUser!.latestFetchTime.push(new Date().toISOString());
+      currentUser!.timestampsOnFetch.push(new Date().toISOString());
     },
     async getFetchedDate(userId: string) {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      return currentUser!.latestFetchTime;
+      return currentUser!.timestampsOnFetch;
     },
-    async refillDailyToken(userId: string) {
+    async getTimestamps(userId: string) {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      const fetchedDate = currentUser!.latestFetchTime;
-      const fetchedDay = fetchedDate;
-      const todaysDate = new Date().toISOString();
-
-      if (fetchedDay.slice(0, 10) < todaysDate.slice(0, 10)) {
-        currentUser!.dailyToken = 1;
-      }
-    },
-    async refillWeeklyToken(userId: string) {
-      const currentUser = tokenData.find(
-        (tokenObject) => userId === tokenObject.userId
-      );
-      currentUser!.weeklyToken = 2;
-    },
-    async getFetch(userId: string) {
-      const currentUser = tokenData.find(
-        (tokenObject) => userId === tokenObject.userId
-      );
-      return currentUser?.latestFetchTime;
+      return currentUser?.timestampsOnFetch;
     },
   };
 }

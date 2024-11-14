@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 import { Repository } from "./repository";
 import { MessageType } from "./type";
-import { calculateDailyTokens, calculateTotalTokens } from "./logic";
+import {calculateTotalTokens } from "./logic";
 
 export function createService(repository: Repository) {
   return {
@@ -23,29 +23,19 @@ export function createService(repository: Repository) {
       };
       return repository.sendMessage(message);
     },
-    async getAllUserTokens(userId: string) {
-      return repository.getAllUserTokens(userId);
-    },
-    async reduceUserToken(userId: string) {
-      repository.reduceUserTokens(userId);
-    },
-    async setFetchTime(userId: string) {
-      repository.setFetchTime(userId);
+    async setFetchedTime(userId: string) {
+      repository.setFetchedTime(userId);
     },
     async getFetchedDate(userId: string) {
       return repository.getFetchedDate(userId);
     },
-    async refillDailyToken(userId: string) {
-      return repository.refillDailyToken(userId);
-    },
-    async refillWeeklyToken(userId: string) {
-      return repository.refillWeeklyToken(userId);
-    },
     async getTokens(userId: string) {
       const currentDate = new Date().toISOString();
-      const fetchedDates = repository.getFetch(userId);
+      const fetchedTimestamps = repository.getTimestamps(userId);
+      //filter timestamps on sunday
       const latestFetchedDate: string[] = [];
       const totalTokens = calculateTotalTokens(latestFetchedDate, currentDate);
+      return totalTokens;
     },
   };
 }
