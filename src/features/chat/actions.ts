@@ -1,6 +1,6 @@
 "use server";
 
-//import { revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { chatFeature } from "./instance";
 const currentUserId = "9e272678-02e9-445c-a77a-82122fada7da";
 
@@ -13,17 +13,15 @@ export async function addMessage(formData: FormData) {
   await chatFeature.service.sendMessage(content);
 }
 
-// export async function revalidateMessages() {
-//   await chatFeature.service.setFetchedTime(currentUserId);
+export async function revalidateMessages() {
+  await chatFeature.service.setFetchedTime(currentUserId);
 
-//   const tokens = await chatFeature.service.getAllUserTokens(currentUserId);
-//   if (!tokens) {
-//     return;
-//   }
-//   //await chatFeature.service.reduceUserToken(currentUserId);
-//   await getFetchedMessages();
-//   revalidatePath("/chat");
-// }
+  const tokens = await chatFeature.service.getTokens(currentUserId);
+  if (!tokens) {
+    return;
+  }
+  revalidatePath("/chat");
+}
 
 export async function getFetchedMessages() {
   const messages = await chatFeature.service.getAllMessages();

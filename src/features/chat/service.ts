@@ -2,7 +2,6 @@ import { v4 } from "uuid";
 import { Repository } from "./repository";
 import { MessageType } from "./type";
 import { calculateTotalTokens, getDateOfLatestSunday } from "./logic";
-import { timeStamp } from "console";
 
 export function createService(repository: Repository) {
   return {
@@ -37,6 +36,7 @@ export function createService(repository: Repository) {
       const latestFetchedDate: string[] = fetchedTimestamps!.filter(
         (timestamps) => latestSunday < timestamps
       );
+      console.log(currentDate);
       const totalTokens = calculateTotalTokens(latestFetchedDate, currentDate);
       return totalTokens;
     },

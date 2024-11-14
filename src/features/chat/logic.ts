@@ -9,8 +9,14 @@ export function calculateDailyTokens(
   rawLatestFetchedDate: string,
   rawCurrentDate: Date
 ) {
+  if (!rawLatestFetchedDate) {
+    console.log("fel");
+    return 1;
+  }
   const latestFetchedDate = rawLatestFetchedDate.split("T");
   const currentDate = rawCurrentDate.toISOString().split("T");
+  console.log(latestFetchedDate);
+  console.log(currentDate);
   if (latestFetchedDate[0] === currentDate[0]) {
     return 0;
   }
@@ -50,12 +56,9 @@ export function calculateTotalTokens(
 }
 
 export function getDateOfLatestSunday(currentDate: Date) {
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
   const date = currentDate.getDate();
   const day = currentDate.getDay();
 
   const dateOfLatestSunday = currentDate.setDate(date - day);
-
-  return new Date(year, month, dateOfLatestSunday).toISOString();
+  return new Date(dateOfLatestSunday).toISOString();
 }
