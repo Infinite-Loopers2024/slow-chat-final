@@ -1,6 +1,7 @@
 import { v4 } from "uuid";
 import { Repository } from "./repository";
 import { MessageType } from "./type";
+import { calculateDailyTokens, calculateTotalTokens } from "./logic";
 
 export function createService(repository: Repository) {
   return {
@@ -39,6 +40,12 @@ export function createService(repository: Repository) {
     },
     async refillWeeklyToken(userId: string) {
       return repository.refillWeeklyToken(userId);
+    },
+    async getTokens(userId: string) {
+      const currentDate = new Date().toISOString();
+      const fetchedDates = repository.getFetch(userId);
+      const latestFetchedDate: string[] = [];
+      const totalTokens = calculateTotalTokens(latestFetchedDate, currentDate);
     },
   };
 }

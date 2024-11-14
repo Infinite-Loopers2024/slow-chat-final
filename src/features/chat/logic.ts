@@ -34,3 +34,17 @@ export function calculateWeeklyTokens(fetchDates: string[]) {
   const weekly = 2 - daysWithMultipleFetches;
   return weekly < 0 ? 0 : weekly;
 }
+
+export function calculateTotalTokens(
+  fetchDates: string[],
+  rawCurrentDate: string
+) {
+  const weeklyTokens = calculateWeeklyTokens(fetchDates);
+
+  const dailyTokens = calculateDailyTokens(
+    fetchDates[fetchDates.length - 1],
+    rawCurrentDate
+  );
+
+  return weeklyTokens + dailyTokens;
+}

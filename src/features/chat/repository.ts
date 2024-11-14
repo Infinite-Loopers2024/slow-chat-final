@@ -60,6 +60,12 @@ export function createRepository() {
       );
       currentUser!.weeklyToken = 2;
     },
+    async getFetch(userId: string) {
+      const currentUser = tokenData.find(
+        (tokenObject) => userId === tokenObject.userId
+      );
+      return currentUser?.latestFetchTime;
+    },
   };
 }
 
