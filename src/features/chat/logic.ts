@@ -10,13 +10,10 @@ export function calculateDailyTokens(
   rawCurrentDate: Date
 ) {
   if (!rawLatestFetchedDate) {
-    console.log("fel");
     return 1;
   }
   const latestFetchedDate = rawLatestFetchedDate.split("T");
   const currentDate = rawCurrentDate.toISOString().split("T");
-  console.log(latestFetchedDate);
-  console.log(currentDate);
   if (latestFetchedDate[0] === currentDate[0]) {
     return 0;
   }
