@@ -31,13 +31,13 @@ export function createService(repository: Repository) {
     },
     async getTokens(userId: string) {
       const currentDate = new Date();
+      const todaysDate = new Date();
       const fetchedTimestamps = await repository.getTimestamps(userId);
       const latestSunday = getDateOfLatestSunday(currentDate);
       const latestFetchedDate: string[] = fetchedTimestamps!.filter(
         (timestamps) => latestSunday < timestamps
       );
-      console.log(currentDate);
-      const totalTokens = calculateTotalTokens(latestFetchedDate, currentDate);
+      const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
       return totalTokens;
     },
   };

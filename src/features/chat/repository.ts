@@ -29,7 +29,7 @@ export function createRepository() {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      return currentUser?.timestampsOnFetch;
+      return currentUser!.timestampsOnFetch;
     },
   };
 }
