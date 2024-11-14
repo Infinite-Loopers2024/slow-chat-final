@@ -15,7 +15,7 @@ export default async function MessageBoard({
     <>
       <div
         id="message-placeholder"
-        className="h-4/6 bg-base-100 rounded-md m-2 overflow-auto flex flex-col-reverse"
+        className="h-4/6 bg-base-100 rounded-md m-2 overflow-auto flex flex-col"
       >
         {messages.map((message) => (
           <Message

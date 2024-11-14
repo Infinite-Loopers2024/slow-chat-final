@@ -8,6 +8,16 @@ export function createService(repository: Repository) {
     async getAllMessages() {
       return repository.getAllMessages();
     },
+    async getFetchedMessages() {
+      const userId = "9e272678-02e9-445c-a77a-82122fada7da";
+      const messages = await repository.getAllMessages();
+      const latestFetchedDate = await repository.getLastFetchedDate(userId);
+      const fetchedMessages = messages.filter(
+        (message) => message.timeStamp < latestFetchedDate
+      );
+
+      return fetchedMessages;
+    },
     async sendMessage(content: string) {
       const id = v4();
       const userId = "9e272678-02e9-445c-a77a-82122fada7da";
@@ -27,7 +37,7 @@ export function createService(repository: Repository) {
       repository.setFetchedTime(userId);
     },
     async getFetchedDate(userId: string) {
-      return repository.getFetchedDate(userId);
+      return repository.getLastFetchedDate(userId);
     },
     async getTokens(userId: string) {
       const currentDate = new Date();

@@ -19,11 +19,13 @@ export function createRepository() {
       );
       currentUser!.timestampsOnFetch.push(new Date().toISOString());
     },
-    async getFetchedDate(userId: string) {
+    async getLastFetchedDate(userId: string) {
       const currentUser = tokenData.find(
         (tokenObject) => userId === tokenObject.userId
       );
-      return currentUser!.timestampsOnFetch;
+      return currentUser!.timestampsOnFetch[
+        currentUser!.timestampsOnFetch.length - 1
+      ];
     },
     async getTimestamps(userId: string) {
       const currentUser = tokenData.find(
