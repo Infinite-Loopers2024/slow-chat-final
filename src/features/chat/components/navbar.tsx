@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Navbar() {
   return (
-    <nav className="navbar bg-base-300">
+    <nav className="navbar bg-primary">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" href=".">
           logo

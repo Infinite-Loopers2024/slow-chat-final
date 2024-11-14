@@ -4,15 +4,17 @@ import { revalidateMessages } from "@/src/features/chat/actions";
 export default function TokenCount({ totalTokens }: { totalTokens: number }) {
   return (
     <>
-      <div id="counter" className="mr-20">
-        token: {totalTokens}
+      <div className="flex flex-col items-center justify-center">
+        <div id="counter" className="mb-1">
+          Remaining token: {totalTokens}
+        </div>
+        <button
+          onClick={() => revalidateMessages()}
+          className="btn btn-accent m-1 w-full"
+        >
+          Fetch messages
+        </button>
       </div>
-      <button
-        onClick={() => revalidateMessages()}
-        className="btn btn-secondary m-1 w-52"
-      >
-        Fetch messages
-      </button>
     </>
   );
 }

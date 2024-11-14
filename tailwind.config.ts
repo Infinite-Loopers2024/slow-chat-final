@@ -12,5 +12,5 @@ export default {
   },
 
   plugins: [tailwindTypography, require("daisyui")],
-  daisyui: { themes: ["lemonade"] },
+  daisyui: { themes: ["pastel"] },
 } satisfies Config;
