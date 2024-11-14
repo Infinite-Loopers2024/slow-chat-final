@@ -1,8 +1,10 @@
 export async function onCooldown(timeStamp: string) {
   const date = new Date();
   date.setHours(date.getHours() - 1);
-  date.toISOString();
-  return timeStamp > date.toISOString();
+  const bajs = date.toISOString().replace("T", " ").replace("Z", "");
+  console.log(bajs);
+  console.log(timeStamp);
+  return timeStamp > date.toISOString().replace("T", " ").replace("Z", "");
 }
 
 export function calculateDailyTokens(
@@ -13,7 +15,9 @@ export function calculateDailyTokens(
     return 1;
   }
   const latestFetchedDate = rawLatestFetchedDate.split(" ");
-  const currentDate = rawCurrentDate.toISOString().split(" ");
+  const currentDate = rawCurrentDate.toISOString().split("T");
+  console.log({ currentDate });
+  console.log({ latestFetchedDate });
   if (latestFetchedDate[0] === currentDate[0]) {
     return 0;
   }
@@ -48,7 +52,8 @@ export function calculateTotalTokens(
     fetchDates[fetchDates.length - 1],
     rawCurrentDate
   );
-
+  console.log({ dailyTokens });
+  console.log({ weeklyTokens });
   return weeklyTokens + dailyTokens;
 }
 

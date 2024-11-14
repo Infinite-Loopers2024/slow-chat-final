@@ -12,7 +12,7 @@ export function createService(repository: Repository) {
       const messages = await repository.getAllMessages();
       const latestFetchedDate = await repository.getLastFetchedDate(user_id);
       const fetchedMessages = messages.filter(
-        (message) => message.timestamp < latestFetchedDate
+        (message) => message.timestamp < latestFetchedDate!
       );
 
       return fetchedMessages;
@@ -39,7 +39,10 @@ export function createService(repository: Repository) {
       const latestFetchedDate: string[] = fetchedTimestamps!.filter(
         (timestamps) => latestSunday < timestamps
       );
-      const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
+      const totalTokens =  calculateTotalTokens(
+        latestFetchedDate,
+        todaysDate
+      );
       return totalTokens;
     },
   };

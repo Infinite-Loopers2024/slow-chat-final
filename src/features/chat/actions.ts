@@ -17,6 +17,8 @@ export async function revalidateMessages() {
   if (!tokens) {
     return;
   }
+
+  
   await chatFeature.service.setFetchedTime(currentUserId);
   revalidatePath("/chat");
 }

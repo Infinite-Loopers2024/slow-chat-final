@@ -34,7 +34,7 @@ export function createRepository() {
           .where(eq(messageFetchTimestamps.userId, userId));
         return timestamps[timestamps.length - 1].timestamp;
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
 

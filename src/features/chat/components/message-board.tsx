@@ -9,7 +9,7 @@ export default async function MessageBoard({
   messages: MessageType[];
 }) {
   const currentUserName = "Peter";
-  const userId = "9e272678-02e9-445c-a77a-82122fada7da";
+  const userId = "550e8400-e29b-41d4-a716-446655440000";
   const totalTokens = await chatFeature.service.getTokens(userId);
   return (
     <>
