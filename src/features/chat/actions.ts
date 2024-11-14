@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { chatFeature } from "./instance";
-const currentUserId = "9e272678-02e9-445c-a77a-82122fada7da";
+const currentUserId = "550e8400-e29b-41d4-a716-446655440000";
 
 export async function addMessage(formData: FormData) {
   const content = formData.get("content") as string;

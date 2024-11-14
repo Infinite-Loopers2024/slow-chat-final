@@ -3,30 +3,28 @@ import { Repository } from "./repository";
 import { MessageType } from "./type";
 import { calculateTotalTokens, getDateOfLatestSunday } from "./logic";
 
- const userId = "9e272678-02e9-445c-a77a-82122fada7da";
- const userName = "Peter";
+const user_id = "550e8400-e29b-41d4-a716-446655440000";
+const userName = "Peter";
 
 export function createService(repository: Repository) {
   return {
     async getFetchedMessages() {
       const messages = await repository.getAllMessages();
-      const latestFetchedDate = await repository.getLastFetchedDate(userId);
+      const latestFetchedDate = await repository.getLastFetchedDate(user_id);
       const fetchedMessages = messages.filter(
-        (message) => message.timeStamp < latestFetchedDate
+        (message) => message.timestamp < latestFetchedDate
       );
 
       return fetchedMessages;
     },
     async sendMessage(content: string) {
-      const id = v4();
       const timeStamp = new Date().toISOString();
 
       const message: MessageType = {
-        id: id,
         content: content,
-        userId: userId,
+        userId: user_id,
         userName: userName,
-        timeStamp: timeStamp,
+        timestamp: timeStamp,
       };
       return repository.sendMessage(message);
     },

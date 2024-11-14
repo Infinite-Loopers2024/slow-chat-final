@@ -17,12 +17,12 @@ export default async function MessageBoard({
         id="message-placeholder"
         className="h-4/6 bg-base-100 rounded-md m-2 overflow-auto flex flex-col"
       >
-        {messages.map((message) => (
+        {messages.map((message, index) => (
           <Message
-            key={message.id}
+            key={index}
             message={message}
             isCurrentUser={message.userName === currentUserName}
-            time={message.timeStamp.slice(11, 16)}
+            time={message.timestamp.slice(11, 16)}
           />
         ))}
       </div>

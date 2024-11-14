@@ -12,8 +12,8 @@ export function calculateDailyTokens(
   if (!rawLatestFetchedDate) {
     return 1;
   }
-  const latestFetchedDate = rawLatestFetchedDate.split("T");
-  const currentDate = rawCurrentDate.toISOString().split("T");
+  const latestFetchedDate = rawLatestFetchedDate.split(" ");
+  const currentDate = rawCurrentDate.toISOString().split(" ");
   if (latestFetchedDate[0] === currentDate[0]) {
     return 0;
   }
@@ -24,7 +24,7 @@ export function calculateWeeklyTokens(fetchDates: string[]) {
   if (fetchDates.length < 2) {
     return 2;
   }
-  const dates = fetchDates.map((date) => date.split("T")[0]);
+  const dates = fetchDates.map((date) => date.split(" ")[0]);
 
   let daysWithMultipleFetches = 0;
   for (let i = 0; i < dates.length; i++) {
