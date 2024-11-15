@@ -1,5 +1,5 @@
 import { Repository } from "./repository";
-import { MessageType } from "./type";
+import { Message } from "./type";
 import { calculateTotalTokens, getDateOfLatestSunday } from "./logic";
 
 const user_id = "550e8400-e29b-41d4-a716-446655440000";
@@ -19,7 +19,7 @@ export function createService(repository: Repository) {
     async sendMessage(content: string) {
       const timeStamp = new Date().toISOString();
 
-      const message: MessageType = {
+      const message: Message = {
         content: content,
         userId: user_id,
         userName: userName,

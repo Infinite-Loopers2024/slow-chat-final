@@ -1,4 +1,4 @@
-import { MessageType } from "./type";
+import { Message } from "./type";
 import { db } from "@/src/index";
 import { messages, messageFetchTimestamps } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
@@ -8,7 +8,7 @@ export function createRepository() {
     async getAllMessages() {
       return await db.select().from(messages);
     },
-    async sendMessage(message: MessageType) {
+    async sendMessage(message: Message) {
       await db.insert(messages).values(message);
     },
     async getUserById(userId: string) {
@@ -30,9 +30,9 @@ export function createRepository() {
           .select({ timestamp: messageFetchTimestamps.timestamp })
           .from(messageFetchTimestamps)
           .where(eq(messageFetchTimestamps.userId, userId));
-          if(timestamps){
-            return timestamps[timestamps.length - 1].timestamp;
-          }
+        if (timestamps) {
+          return timestamps[timestamps.length - 1].timestamp;
+        }
       } catch (error) {
         console.error(error);
       }
