@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { chatFeature } from "./instance";
+
 const currentUserId = "550e8400-e29b-41d4-a716-446655440000";
 
 export async function addMessage(formData: FormData) {
@@ -18,7 +19,6 @@ export async function revalidateMessages() {
     return;
   }
 
-  
   await chatFeature.service.setFetchedTime(currentUserId);
   revalidatePath("/chat");
 }

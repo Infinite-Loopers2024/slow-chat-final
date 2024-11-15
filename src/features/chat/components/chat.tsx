@@ -1,6 +1,7 @@
 import { chatFeature } from "../instance";
 import Form from "./form";
 import MessageBoard from "./message-board";
+
 export async function ChatPage() {
   const messages = await chatFeature.service.getFetchedMessages();
 

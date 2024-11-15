@@ -7,4 +7,3 @@ export function createChatFeature() {
 
   return { service };
 }
-
