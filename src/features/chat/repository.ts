@@ -1,9 +1,7 @@
 import { MessageType } from "./type";
-import tokens from "../../fixtures/fetch-tokens.json";
 import { db } from "@/src/index";
 import { messages, messageFetchTimestamps } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
-import { time } from "console";
 
 export function createRepository() {
   return {
