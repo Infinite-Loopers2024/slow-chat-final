@@ -1,12 +1,12 @@
 import { chatFeature } from "../instance";
-import { MessageType } from "../type";
-import Message from "./message";
+import type { Message } from "../type";
+import { Message as Msg } from "./message";
 import TokenCount from "./token-count";
 
 export default async function MessageBoard({
   messages,
 }: {
-  messages: MessageType[];
+  messages: Message[];
 }) {
   const currentUserName = "Peter";
   const userId = "550e8400-e29b-41d4-a716-446655440000";
@@ -18,7 +18,7 @@ export default async function MessageBoard({
         className="h-4/6 bg-base-100 rounded-md m-2 overflow-auto flex flex-col"
       >
         {messages.map((message, index) => (
-          <Message
+          <Msg
             key={index}
             message={message}
             isCurrentUser={message.userName === currentUserName}

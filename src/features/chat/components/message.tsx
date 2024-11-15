@@ -1,7 +1,7 @@
 import { onCooldown } from "../logic";
 import type { Message } from "../type";
 
-export default async function Message({
+export async function Message({
   message,
   isCurrentUser,
   time,
