@@ -2,7 +2,6 @@ import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 
-
 export const messageFetchTimestamps = pgTable("message_fetch_timestamps", {
 	id: serial().primaryKey().notNull(),
 	userId: text("user_id").notNull(),
