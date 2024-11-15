@@ -11,7 +11,7 @@ export function createRepository() {
     async sendMessage(message: Message) {
       await db.insert(messages).values(message);
     },
-    async getUserById(userId: string) {
+    async getUser(userId: string) {
       return await db
         .select()
         .from(messages)
