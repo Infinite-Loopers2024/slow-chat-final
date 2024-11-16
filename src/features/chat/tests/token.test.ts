@@ -1,8 +1,17 @@
-import { describe, it } from "node:test"
+import { describe, it } from "node:test";
+import { calculateDailyTokens } from "../logic";
+import { deepEqual } from "node:assert";
 
 describe("daily token", () => {
-  it("zero fetches should return one", () => {});
-  it("fetch on same day return zero", () => {});
+  it.only("zero fetches should return one", () => {
+    const rowlatestFetchDate = "";
+    const currentDate = new Date();
+    const result = calculateDailyTokens(rowlatestFetchDate, currentDate);
+    deepEqual(result, 1);
+  });
+  it("fetch on same day return zero", () => {
+    // const rowlatestFetchDate = ["2024-11-15 08:24:21.434"];
+  });
   it("feetch on different day should return one", () => {});
 });
 
