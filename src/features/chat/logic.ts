@@ -1,5 +1,4 @@
-export async function onCooldown(timeStamp: string) {
-  const date = new Date();
+export function onCooldown(timeStamp: string, date: Date) {
   date.setHours(date.getHours() - 1);
   return timeStamp > date.toISOString().replace("T", " ").replace("Z", "");
 }

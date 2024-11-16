@@ -11,7 +11,7 @@ export async function Message({
   time: string;
 }) {
   const { userName, content } = message;
-  const cooldown = await onCooldown(message.timestamp);
+  const cooldown = await onCooldown(message.timestamp, new Date());
   return (
     <section className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">
