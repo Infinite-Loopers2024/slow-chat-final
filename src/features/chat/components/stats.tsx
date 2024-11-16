@@ -2,7 +2,7 @@ import { chatFeature } from "../instance";
 
 export async function Stats() {
   const messages = await chatFeature.service.getAllUserMessages();
-  const messageCount = await chatFeature.service.getAllMessagePerFetch();
+  const messageCount = await chatFeature.service.getAllMessagesPerFetch();
   return (
     <div className="flex flex-col items-center justify-center md:flex-row md:items-start">
       <section className="w-8/12 md:w-4/12 flex flex-col items-center justify-center">
@@ -10,7 +10,6 @@ export async function Stats() {
         <div className="stats stats-vertical shadow  mb-14 mt-4">
           {messages.map((message, index) => (
             <div className="stat shadow place-items-center" key={index}>
-              <div className="stat-title">User name</div>{" "}
               <div className="stat-value text-sm">{message.userName}</div>
               <div className="stat-title">Message count</div>{" "}
               <div className="stat-value text-sm">{message.count}</div>
@@ -21,7 +20,6 @@ export async function Stats() {
 
       <section className="w-8/12 md:w-4/12 flex flex-col items-center justify-center">
         <h1 className="mb-4 text-center">Fetch count</h1>
-
         <div className="stats stats-vertical shadow ">
           {messageCount.map((message, index) => (
             <div key={index}>

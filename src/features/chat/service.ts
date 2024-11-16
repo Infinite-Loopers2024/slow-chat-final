@@ -64,7 +64,7 @@ export function createService(repository: Repository) {
     async getAllUserMessages() {
       return await repository.getAllUserMessages();
     },
-    async getAllMessagePerFetch() {
+    async getAllMessagesPerFetch() {
       const allMessages = await repository.getAllMessages();
       const allFetches = await repository.getAllFetches();
 
