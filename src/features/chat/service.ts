@@ -41,5 +41,6 @@ export function createService(repository: Repository) {
       const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
       return totalTokens;
     },
+    
   };
 }
