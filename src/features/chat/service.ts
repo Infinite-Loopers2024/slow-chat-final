@@ -29,7 +29,7 @@ export function createService(repository: Repository) {
         userName: userName,
         timestamp: timeStamp,
       };
-      return repository.sendMessage(message);
+      repository.sendMessage(message);
     },
     async setFetchedTime(userId: string) {
       repository.setFetchedTime(userId);
