@@ -34,8 +34,9 @@ export function createService(repository: Repository) {
         console.log(validatedMessage.error);
       }
 
+      console.log(validatedMessage.data);
       const message: Message = {
-        content: content,
+        content: validatedMessage.data!.content,
         userId: user_id,
         userName: userName,
         timestamp: timeStamp,
@@ -65,41 +66,41 @@ export function createService(repository: Repository) {
     },
     async getAllMessagePerFetch() {
       const allMessages = await repository.getAllMessages();
-      const getAllFetches = await repository.getAllFetches();
+      const allFetches = await repository.getAllFetches();
 
       const messagesPerFetch = [];
-      let onCooldownMessags = 0;
+      let onCooldownMessages = 0;
       let messageCount = 0;
 
-      for (let i = 0; i < getAllFetches.length; i++) {
+      for (let i = 0; i < allFetches.length; i++) {
         messageCount = 0;
-        onCooldownMessags = 0;
+        onCooldownMessages = 0;
         for (let n = 0; n < allMessages.length; n++) {
           if (i === 0) {
-            if (allMessages[n].timestamp < getAllFetches[i].timestamp) {
+            if (allMessages[n].timestamp < allFetches[i].timestamp) {
               messageCount++;
             }
           } else {
             if (
-              allMessages[n].timestamp < getAllFetches[i].timestamp &&
-              allMessages[n].timestamp > getAllFetches[i - 1].timestamp
+              allMessages[n].timestamp < allFetches[i].timestamp &&
+              allMessages[n].timestamp > allFetches[i - 1].timestamp
             ) {
               if (
                 onCooldown(
                   allMessages[n].timestamp,
-                  new Date(getAllFetches[i].timestamp)
+                  new Date(allFetches[i].timestamp)
                 )
               ) {
-                onCooldownMessags++;
+                onCooldownMessages++;
               }
               messageCount++;
             }
           }
         }
         messagesPerFetch.push({
-          fetchDate: getAllFetches[i],
-          fetchCount: messageCount - onCooldownMessags,
-          messagesOnCooldown: onCooldownMessags,
+          fetchDate: allFetches[i],
+          fetchCount: messageCount - onCooldownMessages,
+          messagesOnCooldown: onCooldownMessages,
         });
       }
       return messagesPerFetch;
