@@ -68,10 +68,12 @@ export function createService(repository: Repository) {
       const getAllFetches = await repository.getAllFetches();
 
       const messagesPerFetch = [];
+      let onCooldownMessags = 0;
       let messageCount = 0;
 
       for (let i = 0; i < getAllFetches.length; i++) {
         messageCount = 0;
+        onCooldownMessags = 0;
         for (let n = 0; n < allMessages.length; n++) {
           if (i === 0) {
             if (allMessages[n].timestamp < getAllFetches[i].timestamp) {
@@ -82,13 +84,22 @@ export function createService(repository: Repository) {
               allMessages[n].timestamp < getAllFetches[i].timestamp &&
               allMessages[n].timestamp > getAllFetches[i - 1].timestamp
             ) {
+              if (
+                onCooldown(
+                  allMessages[n].timestamp,
+                  new Date(getAllFetches[i].timestamp)
+                )
+              ) {
+                onCooldownMessags++;
+              }
               messageCount++;
             }
           }
         }
         messagesPerFetch.push({
           fetchDate: getAllFetches[i],
-          fetchCount: messageCount,
+          fetchCount: messageCount - onCooldownMessags,
+          messagesOnCooldown: onCooldownMessags,
         });
       }
       return messagesPerFetch;
