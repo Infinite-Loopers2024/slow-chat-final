@@ -1,6 +1,6 @@
 import { deepEqual } from "node:assert";
 import { describe, it } from "node:test";
-import { calculateDailyTokens } from "../logic";
+import { calculateDailyTokens, calculateWeeklyTokens } from "../logic";
 
 describe("daily token", () => {
   it("zero fetches should return one", () => {
@@ -24,7 +24,12 @@ describe("daily token", () => {
 });
 
 describe("weekly token", () => {
-  it("zero fetches should return two", () => {});
+  it("zero fetches should return two", () => {
+    const rawlatestFetchDate: string[] = [];
+    const currentDate = new Date("2024-11-16 08:24:21.434");
+    const result = calculateWeeklyTokens(rawlatestFetchDate)
+    deepEqual(result, 2)
+  });
   it("one fetch a day should return two", () => {});
   it("two fetches on the same day should return one", () => {});
   it("three fetches on the same day should return zero", () => {});
