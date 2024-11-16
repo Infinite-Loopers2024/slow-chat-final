@@ -1,5 +1,5 @@
-import { onCooldown } from "../logic";
 import type { Message } from "../type";
+import { chatFeature } from "../instance";
 
 export async function Message({
   message,
@@ -11,7 +11,7 @@ export async function Message({
   time: string;
 }) {
   const { userName, content } = message;
-  const cooldown = await onCooldown(message.timestamp, new Date());
+  const cooldown = chatFeature.service.checkIfOnCooldown(message.timestamp);
   return (
     <section className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">

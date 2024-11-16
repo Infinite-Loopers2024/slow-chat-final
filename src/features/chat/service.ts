@@ -1,6 +1,10 @@
 import { Repository } from "./repository";
 import { Message } from "./type";
-import { calculateTotalTokens, getDateOfLatestSunday } from "./logic";
+import {
+  calculateTotalTokens,
+  getDateOfLatestSunday,
+  onCooldown,
+} from "./logic";
 
 const user_id = "550e8400-e29b-41d4-a716-446655440000";
 const userName = "Peter";
@@ -41,6 +45,9 @@ export function createService(repository: Repository) {
       const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
       return totalTokens;
     },
-    
+    checkIfOnCooldown(timestamp: string) {
+      const currentDate = new Date();
+      return onCooldown(timestamp, currentDate);
+    },
   };
 }
