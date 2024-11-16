@@ -38,6 +38,12 @@ export function createRepository() {
       }
     },
 
+    async getAllFetches() {
+      return await db
+        .select({ timestamp: messageFetchTimestamps.timestamp })
+        .from(messageFetchTimestamps);
+    },
+
     async getTimestamps(userId: string) {
       const timestamps = await db
         .select({ timestamp: messageFetchTimestamps.timestamp })

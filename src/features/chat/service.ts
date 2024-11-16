@@ -63,5 +63,35 @@ export function createService(repository: Repository) {
     async getAllUserMessageById() {
       return await repository.getAllUserMessageById();
     },
+    async getAllMessagePerFetch() {
+      const allMessages = await repository.getAllMessages();
+      const getAllFetches = await repository.getAllFetches();
+
+      const messagesPerFetch = [];
+      let messageCount = 0;
+
+      for (let i = 0; i < getAllFetches.length; i++) {
+        messageCount = 0;
+        for (let n = 0; n < allMessages.length; n++) {
+          if (i === 0) {
+            if (allMessages[n].timestamp < getAllFetches[i].timestamp) {
+              messageCount++;
+            }
+          } else {
+            if (
+              allMessages[n].timestamp < getAllFetches[i].timestamp &&
+              allMessages[n].timestamp > getAllFetches[i - 1].timestamp
+            ) {
+              messageCount++;
+            }
+          }
+        }
+        messagesPerFetch.push({
+          fetchDate: getAllFetches[i],
+          fetchCount: messageCount,
+        });
+      }
+      return messagesPerFetch;
+    },
   };
 }
