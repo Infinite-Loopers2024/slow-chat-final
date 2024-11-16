@@ -6,27 +6,35 @@ export async function Stats() {
   console.log(messages);
   return (
     <>
-      <div className="stats stats-vertical shadow">
-        <div className="stat">
+      <div className="flex flex-col justify-center items-center mt-6">
+        <div className="stats shadow">
           <div>
             {messages.map((message, index) => (
-              <div key={index}>
-                User nam: {message.userName}, Message Count: {message.count}
+              <div className="stat shadow place-items-center" key={index}>
+                <div className="stat-title">User name</div>{" "}
+                <div className="stat-value text-sm">{message.userName}</div>
+                <div className="stat-title">Message count</div>{" "}
+                <div className="stat-value text-sm">{message.count}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <br />
-        <div>
-          {test.map((message, index) => (
-            <div key={index}>
-              <span>Fetch Date: {message.fetchDate.timestamp}</span>
-              <br />
-              <span>Fetch Count: {message.fetchCount}</span>
-              <br /> <br />
-            </div>
-          ))}
+        <div className="flex flex-col  justify-center items-center mt-6">
+          <div className="stats flex flex-col md:flex-row shadow">
+            {test.map((message, index) => (
+              <div key={index}>
+                <div className="stat shadow place-items-center" key={index}>
+                  <div className="stat-title">Fetch date</div>{" "}
+                  <div className="stat-value text-sm">
+                    {message.fetchDate.timestamp}
+                  </div>
+                  <div className="stat-title">Fetch count</div>{" "}
+                  <div className="stat-value text-sm">{message.fetchCount}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
