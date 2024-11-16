@@ -5,7 +5,7 @@ import { calculateDailyTokens, calculateWeeklyTokens } from "../logic";
 describe("daily token", () => {
   it("zero fetches should return one", () => {
     const rawlatestFetchDate = "";
-    const currentDate = new Date();
+    const currentDate = new Date("2024-11-16 08:24:21.434");
     const result = calculateDailyTokens(rawlatestFetchDate, currentDate);
     deepEqual(result, 1);
   });
@@ -25,12 +25,15 @@ describe("daily token", () => {
 
 describe("weekly token", () => {
   it("zero fetches should return two", () => {
-    const rawlatestFetchDate: string[] = [];
-    const currentDate = new Date("2024-11-16 08:24:21.434");
-    const result = calculateWeeklyTokens(rawlatestFetchDate)
-    deepEqual(result, 2)
+    const fetchDates: string[] = [];
+    const result = calculateWeeklyTokens(fetchDates);
+    deepEqual(result, 2);
   });
-  it("one fetch a day should return two", () => {});
+  it("one fetch a day should return two", () => {
+    const fetchDates: string[] = ["2024-11-15 08:24:21.434"];
+    const result = calculateWeeklyTokens(fetchDates);
+    deepEqual(result, 2);
+  });
   it("two fetches on the same day should return one", () => {});
   it("three fetches on the same day should return zero", () => {});
 });
