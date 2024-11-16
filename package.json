@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "tsx --watch --test"
   },
   "dependencies": {
     "drizzle-orm": "^0.36.2",
