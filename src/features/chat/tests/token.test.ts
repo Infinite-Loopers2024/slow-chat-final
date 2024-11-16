@@ -1,6 +1,10 @@
 import { deepEqual } from "node:assert";
 import { describe, it } from "node:test";
-import { calculateDailyTokens, calculateWeeklyTokens } from "../logic";
+import {
+  calculateDailyTokens,
+  calculateWeeklyTokens,
+  getDateOfLatestSunday,
+} from "../logic";
 
 describe("daily token", () => {
   it("zero fetches should return one", () => {
@@ -35,20 +39,28 @@ describe("weekly token", () => {
     deepEqual(result, 2);
   });
   it("two fetches on the same day should return one", () => {
-     const fetchDates: string[] = [
-       "2024-11-15 08:24:21.434",
-       "2024-11-15 08:24:21.434",
-     ];
-     const result = calculateWeeklyTokens(fetchDates);
-     deepEqual(result, 1);
+    const fetchDates: string[] = [
+      "2024-11-15 08:24:21.434",
+      "2024-11-15 08:24:21.434",
+    ];
+    const result = calculateWeeklyTokens(fetchDates);
+    deepEqual(result, 1);
   });
   it("three fetches on the same day should return zero", () => {
     const fetchDates: string[] = [
       "2024-11-15 08:24:21.434",
       "2024-11-15 08:24:21.434",
-      "2024-11-15 08:24:21.434"
+      "2024-11-15 08:24:21.434",
     ];
     const result = calculateWeeklyTokens(fetchDates);
     deepEqual(result, 0);
+  });
+});
+
+describe("sunday function ", () => {
+  it("on monday it gives back last sundays date", () => {
+    const date = new Date("2024-11-11 08:24:21.434");
+    const result = getDateOfLatestSunday(date);
+    deepEqual(result, "2024-11-10T08:24:21.434Z");
   });
 });

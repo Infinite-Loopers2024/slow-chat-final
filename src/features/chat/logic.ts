@@ -54,6 +54,8 @@ export function calculateTotalTokens(
 export function getDateOfLatestSunday(currentDate: Date) {
   const date = currentDate.getDate();
   const day = currentDate.getDay();
+  const currentHour = currentDate.getHours();
+  currentDate.setHours(currentHour + 1);
 
   const dateOfLatestSunday = currentDate.setDate(date - day);
   return new Date(dateOfLatestSunday).toISOString();
