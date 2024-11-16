@@ -49,6 +49,14 @@ export function createRepository() {
       });
       return timestamp;
     },
+    async getAllUserMessageById() {
+      const numberMessagesPerUser = await db
+        .select({ userId: messages.userId })
+        .from(messages)
+        .groupBy(messages.userId);
+
+      return numberMessagesPerUser;
+    },
   };
 }
 

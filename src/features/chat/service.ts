@@ -49,5 +49,8 @@ export function createService(repository: Repository) {
       const currentDate = new Date();
       return onCooldown(timestamp, currentDate);
     },
+    async getAllUserMessageById() {
+      const users = await repository.getAllUserMessageById();
+    },
   };
 }
