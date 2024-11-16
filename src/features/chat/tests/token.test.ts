@@ -34,6 +34,21 @@ describe("weekly token", () => {
     const result = calculateWeeklyTokens(fetchDates);
     deepEqual(result, 2);
   });
-  it("two fetches on the same day should return one", () => {});
-  it("three fetches on the same day should return zero", () => {});
+  it("two fetches on the same day should return one", () => {
+     const fetchDates: string[] = [
+       "2024-11-15 08:24:21.434",
+       "2024-11-15 08:24:21.434",
+     ];
+     const result = calculateWeeklyTokens(fetchDates);
+     deepEqual(result, 1);
+  });
+  it("three fetches on the same day should return zero", () => {
+    const fetchDates: string[] = [
+      "2024-11-15 08:24:21.434",
+      "2024-11-15 08:24:21.434",
+      "2024-11-15 08:24:21.434"
+    ];
+    const result = calculateWeeklyTokens(fetchDates);
+    deepEqual(result, 0);
+  });
 });
