@@ -30,7 +30,7 @@ export function createRepository() {
           .select({ timestamp: messageFetchTimestamps.timestamp })
           .from(messageFetchTimestamps)
           .where(eq(messageFetchTimestamps.userId, userId));
-        if (timestamps) {
+        if (timestamps.length !== 0) {
           return timestamps[timestamps.length - 1].timestamp;
         }
       } catch (error) {
