@@ -8,7 +8,7 @@ export async function Stats() {
     <div>
       {messages.map((message, index) => (
         <div key={index}>
-          User ID: {message.userName}, Message Count: {message.count}
+          User name: {message.userName}, Message Count: {message.count}
         </div>
       ))}
     </div>
