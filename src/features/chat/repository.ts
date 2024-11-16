@@ -1,7 +1,7 @@
-import { Message } from "./type";
+import { messageFetchTimestamps, messages } from "@/drizzle/schema";
 import { db } from "@/src/index";
-import { messages, messageFetchTimestamps } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
+import { Message } from "./type";
 
 export function createRepository() {
   return {
@@ -51,10 +51,9 @@ export function createRepository() {
     },
     async getAllUserMessageById() {
       const numberMessagesPerUser = await db
-        .select({ userId: messages.userId })
+        .select({ userName: messages.userName, count: count(messages.id) })
         .from(messages)
-        .groupBy(messages.userId);
-
+        .groupBy(messages.userId, messages.userName);
       return numberMessagesPerUser;
     },
   };

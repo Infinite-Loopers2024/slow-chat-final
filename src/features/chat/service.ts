@@ -1,17 +1,15 @@
-import { Repository } from "./repository";
-import type{ Message } from "./type";
+import { z } from "zod";
 import {
   calculateTotalTokens,
   getDateOfLatestSunday,
   onCooldown,
 } from "./logic";
-import {z} from "zod";
-
+import { Repository } from "./repository";
+import type { Message } from "./type";
 
 const Message = z.object({
   content: z.string(),
-
-})
+});
 
 const user_id = "550e8400-e29b-41d4-a716-446655440000";
 const userName = "Peter";
@@ -30,10 +28,10 @@ export function createService(repository: Repository) {
     async sendMessage(content: string) {
       const timeStamp = new Date().toISOString();
 
-      const validatedMessage = Message.safeParse({content: content})
+      const validatedMessage = Message.safeParse({ content: content });
 
-      if(!validatedMessage.success){
-        console.log(validatedMessage.error)
+      if (!validatedMessage.success) {
+        console.log(validatedMessage.error);
       }
 
       const message: Message = {
@@ -63,7 +61,7 @@ export function createService(repository: Repository) {
       return onCooldown(timestamp, currentDate);
     },
     async getAllUserMessageById() {
-      const users = await repository.getAllUserMessageById();
+      return await repository.getAllUserMessageById();
     },
   };
 }
