@@ -3,14 +3,18 @@ import { calculateDailyTokens } from "../logic";
 import { deepEqual } from "node:assert";
 
 describe("daily token", () => {
-  it.only("zero fetches should return one", () => {
-    const rowlatestFetchDate = "";
+  it("zero fetches should return one", () => {
+    const rawlatestFetchDate = "";
     const currentDate = new Date();
-    const result = calculateDailyTokens(rowlatestFetchDate, currentDate);
+    const result = calculateDailyTokens(rawlatestFetchDate, currentDate);
     deepEqual(result, 1);
   });
   it("fetch on same day return zero", () => {
-    // const rowlatestFetchDate = ["2024-11-15 08:24:21.434"];
+    const rawlatestFetchDate = "2024-11-16 08:24:21.434";
+    const currentDate = new Date("2024-11-16 08:24:21.434");
+    const result = calculateDailyTokens(rawlatestFetchDate, currentDate);
+    deepEqual(result, 0)
+
   });
   it("feetch on different day should return one", () => {});
 });
