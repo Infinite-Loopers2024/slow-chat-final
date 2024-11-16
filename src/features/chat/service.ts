@@ -61,8 +61,8 @@ export function createService(repository: Repository) {
       const currentDate = new Date();
       return onCooldown(timestamp, currentDate);
     },
-    async getAllUserMessageById() {
-      return await repository.getAllUserMessageById();
+    async getAllUserMessages() {
+      return await repository.getAllUserMessages();
     },
     async getAllMessagePerFetch() {
       const allMessages = await repository.getAllMessages();

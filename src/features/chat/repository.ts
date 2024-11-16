@@ -55,7 +55,7 @@ export function createRepository() {
       });
       return timestamp;
     },
-    async getAllUserMessageById() {
+    async getAllUserMessages() {
       const numberMessagesPerUser = await db
         .select({ userName: messages.userName, count: count(messages.id) })
         .from(messages)

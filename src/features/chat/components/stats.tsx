@@ -1,7 +1,7 @@
 import { chatFeature } from "../instance";
 
 export async function Stats() {
-  const messages = await chatFeature.service.getAllUserMessageById();
+  const messages = await chatFeature.service.getAllUserMessages();
   const messageCount = await chatFeature.service.getAllMessagePerFetch();
   return (
     <div className="flex flex-col items-center justify-center md:flex-row md:items-start">
