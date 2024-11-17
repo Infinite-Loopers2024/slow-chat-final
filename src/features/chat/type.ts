@@ -8,3 +8,8 @@ export type Message = {
 export type FetchTimestamp = {
   timestamp: string;
 };
+
+export type UserMessage = {
+  userName: string;
+  count: number;
+};
