@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  calculateFetchedMessages,
   calculateTotalTokens,
   getDateOfLatestSunday,
   onCooldown,
@@ -68,42 +69,10 @@ export function createService(repository: Repository) {
       const allMessages = await repository.getAllMessages();
       const allFetches = await repository.getAllFetches();
 
-      const messagesPerFetch = [];
-      let onCooldownMessages = 0;
-      let messageCount = 0;
+      const messagesPerFetch = calculateFetchedMessages(allMessages, allFetches);
 
-      for (let i = 0; i < allFetches.length; i++) {
-        messageCount = 0;
-        onCooldownMessages = 0;
-        for (let n = 0; n < allMessages.length; n++) {
-          if (i === 0) {
-            if (allMessages[n].timestamp < allFetches[i].timestamp) {
-              messageCount++;
-            }
-          } else {
-            if (
-              allMessages[n].timestamp < allFetches[i].timestamp &&
-              allMessages[n].timestamp > allFetches[i - 1].timestamp
-            ) {
-              if (
-                onCooldown(
-                  allMessages[n].timestamp,
-                  new Date(allFetches[i].timestamp)
-                )
-              ) {
-                onCooldownMessages++;
-              }
-              messageCount++;
-            }
-          }
-        }
-        messagesPerFetch.push({
-          fetchDate: allFetches[i],
-          fetchCount: messageCount - onCooldownMessages,
-          messagesOnCooldown: onCooldownMessages,
-        });
-      }
       return messagesPerFetch;
-    },
+
+    }
   };
 }

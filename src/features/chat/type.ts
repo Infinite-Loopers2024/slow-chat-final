@@ -4,3 +4,7 @@ export type Message = {
   userName: string;
   timestamp: string;
 };
+
+export type FetchTimestamp = {
+  timestamp: string;
+};

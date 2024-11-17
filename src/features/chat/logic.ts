@@ -1,3 +1,5 @@
+import { FetchTimestamp, Message } from "./type";
+
 export function onCooldown(timeStamp: string, date: Date) {
   date.setHours(date.getHours() - 1);
   return timeStamp > date.toISOString().replace("T", " ").replace("Z", "");
@@ -59,4 +61,44 @@ export function getDateOfLatestSunday(currentDate: Date) {
 
   const dateOfLatestSunday = currentDate.setDate(date - day);
   return new Date(dateOfLatestSunday).toISOString();
+}
+
+
+export function calculateFetchedMessages(allMessages: Message[], allFetches: FetchTimestamp[]){
+  const messagesPerFetch = [];
+  let onCooldownMessages = 0;
+  let messageCount = 0;
+
+  for (let i = 0; i < allFetches.length; i++) {
+    messageCount = 0;
+    onCooldownMessages = 0;
+    for (let n = 0; n < allMessages.length; n++) {
+      if (i === 0) {
+        if (allMessages[n].timestamp < allFetches[i].timestamp) {
+          messageCount++;
+        }
+      } else {
+        if (
+          allMessages[n].timestamp < allFetches[i].timestamp &&
+          allMessages[n].timestamp > allFetches[i - 1].timestamp
+        ) {
+          if (
+            onCooldown(
+              allMessages[n].timestamp,
+              new Date(allFetches[i].timestamp)
+            )
+          ) {
+            onCooldownMessages++;
+          }
+          messageCount++;
+        }
+      }
+    }
+    messagesPerFetch.push({
+      fetchDate: allFetches[i],
+      fetchCount: messageCount - onCooldownMessages,
+      messagesOnCooldown: onCooldownMessages,
+    });
+  }
+  return messagesPerFetch
 }
