@@ -63,8 +63,10 @@ export function getDateOfLatestSunday(currentDate: Date) {
   return new Date(dateOfLatestSunday).toISOString();
 }
 
-
-export function calculateFetchedMessages(allMessages: Message[], allFetches: FetchTimestamp[]){
+export function calculateFetchedMessages(
+  allMessages: Message[],
+  allFetches: FetchTimestamp[]
+) {
   const messagesPerFetch = [];
   let onCooldownMessages = 0;
   let messageCount = 0;
@@ -75,6 +77,14 @@ export function calculateFetchedMessages(allMessages: Message[], allFetches: Fet
     for (let n = 0; n < allMessages.length; n++) {
       if (i === 0) {
         if (allMessages[n].timestamp < allFetches[i].timestamp) {
+          if (
+            onCooldown(
+              allMessages[n].timestamp,
+              new Date(allFetches[i].timestamp)
+            )
+          ) {
+            onCooldownMessages++;
+          }
           messageCount++;
         }
       } else {
@@ -100,5 +110,5 @@ export function calculateFetchedMessages(allMessages: Message[], allFetches: Fet
       messagesOnCooldown: onCooldownMessages,
     });
   }
-  return messagesPerFetch
+  return messagesPerFetch;
 }
