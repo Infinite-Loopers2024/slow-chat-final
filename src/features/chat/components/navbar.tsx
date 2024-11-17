@@ -16,6 +16,9 @@ export function Navbar() {
           <li>
             <Link href="\statistics\">Statistics</Link>
           </li>
+          <li>
+            <Link href="/">Logout</Link>
+          </li>
         </ul>
       </div>
     </nav>
