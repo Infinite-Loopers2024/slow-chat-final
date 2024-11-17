@@ -1,9 +1,29 @@
-import { LoginForm } from "@/src/features/";
+"use client";
+
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  function onClick() {
+    redirect("/login");
+  }
   return (
-    <div className=" items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <LoginForm />
-    </div>
+    <>
+      <main className="main">
+        <section className="hero p-8">
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+              <h1 className="text-5xl font-bold">ChatChill</h1>
+              <p className="py-6">
+                Take it easy! Fetch new messages daily or twice a
+                week—stress-free chatting at its finest.
+              </p>
+              <button className="btn btn-accent my-2 px-6" onClick={onClick}>
+                Log in
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
