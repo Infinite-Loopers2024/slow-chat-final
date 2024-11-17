@@ -1,6 +1,7 @@
 "use client";
 
 import { redirect } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   function onClick() {
@@ -8,9 +9,9 @@ export default function Home() {
   }
   return (
     <>
-      <main className="main">
+      <main className="main h-screen bg-primary flex justify-center items-center">
         <section className="hero p-8">
-          <div className="hero-content text-center">
+          <div className="hero-content flex flex-col text-center md:flex-row">
             <div className="max-w-md">
               <h1 className="text-5xl font-bold">ChatChill</h1>
               <p className="py-6">
@@ -21,6 +22,13 @@ export default function Home() {
                 Log in
               </button>
             </div>
+            <Image
+              src="/chat.png"
+              width={400}
+              height={400}
+              alt="Picture of the slow chat application"
+              className="md:ml-10 pt-0 mt-6 md:mt-0 shadow-2xl rounded-lg"
+            />
           </div>
         </section>
       </main>
