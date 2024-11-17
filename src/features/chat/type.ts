@@ -13,3 +13,9 @@ export type UserMessage = {
   userName: string;
   count: number;
 };
+
+export type MessageCount = {
+  fetchDate: FetchTimestamp;
+  fetchCount: number;
+  messagesOnCooldown: number;
+};
