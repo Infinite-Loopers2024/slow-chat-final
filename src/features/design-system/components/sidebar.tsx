@@ -9,7 +9,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         id="my-drawer"
         className="drawer-toggle"
       />
-      <div className="drawer-content flex flex-col items-center h-screen">
+      <div className="drawer-content flex flex-col items-center justify-center">
         {children}
         <label
           htmlFor="my-drawer"
@@ -27,9 +27,17 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           <li>
             <Link href="\design-system\buttons">Butttons</Link>
+          </li>
+          <li>
             <Link href="\design-system\forms">Forms</Link>
+          </li>
+          <li>
             <Link href="\design-system\colors">Colors</Link>
+          </li>
+          <li>
             <Link href="/layout">Layout</Link>
+          </li>
+          <li>
             <Link href="\design-system\typography">Typography</Link>
           </li>
         </ul>

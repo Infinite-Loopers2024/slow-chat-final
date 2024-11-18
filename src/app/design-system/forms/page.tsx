@@ -1,6 +1,6 @@
 export default function Forms() {
   return (
-    <>
+    <div>
       <input
         className="input input-border input-accent w-full max-w-xs m-3 rounded"
         placeholder="type here"
@@ -20,6 +20,6 @@ export default function Forms() {
           Please provide a valid password
         </p>
       </div>
-    </>
+    </div>
   );
 }
