@@ -4,7 +4,7 @@ export function Navbar() {
   return (
     <nav className="navbar bg-primary">
       <div className="flex-1">
-        <Link className="btn btn-ghost text-lg p-1 " href=".">
+        <Link className="btn btn-ghost text-lg p-1 font-bold" href=".">
           ChatChill
         </Link>
       </div>
