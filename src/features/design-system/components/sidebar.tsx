@@ -27,7 +27,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           <li>
             <Link href="\design-system\buttons">Butttons</Link>
-            <Link href="/forms">Forms</Link>
+            <Link href="\design-system\forms">Forms</Link>
             <Link href="/colors">Colors</Link>
             <Link href="/layout">Layout</Link>
             <Link href="/typography">Typeography</Link>
