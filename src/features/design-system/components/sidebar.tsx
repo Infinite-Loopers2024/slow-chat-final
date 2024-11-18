@@ -9,7 +9,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
         id="my-drawer"
         className="drawer-toggle"
       />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col items-center h-screen">
         {children}
         <label
           htmlFor="my-drawer"
