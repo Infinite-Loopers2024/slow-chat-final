@@ -1,7 +1,7 @@
 export default function Buttons() {
   return (
     <>
-      <div className="container">
+      <div className="container mx-auto">
         <button className="btn btn-accent rounded-lg m-1 w-full mb-4 md:mb-0 md:w-4/12 w">
           Primar
         </button>

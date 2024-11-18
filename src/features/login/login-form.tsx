@@ -5,7 +5,7 @@ export function LoginForm() {
     <div className="flex min-h-full flex-col justify-center items-center h-screen bg-slate-100">
       <h1 className="pb-12 text-xl font-bold">Log in to your chat </h1>
       <form
-        className="container flex flex-col justify-center items-center rounded-lg w-10/12 md:w-4/12 shadow-md p-8 border-2 border-primary bg-white"
+        className="container mx-auto flex flex-col justify-center items-center rounded-lg w-10/12 md:w-4/12 shadow-md p-8 border-2 border-primary bg-white"
         action={signIn}
       >
         <label htmlFor="user-name">Username</label>

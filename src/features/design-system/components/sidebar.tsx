@@ -35,7 +35,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
             <Link href="\design-system\colors">Colors</Link>
           </li>
           <li>
-            <Link href="/layout">Layout</Link>
+            <Link href="\design-system\layout">Layout</Link>
           </li>
           <li>
             <Link href="\design-system\typography">Typography</Link>

@@ -6,7 +6,7 @@ export function FetchCount({ messageCount }: { messageCount: MessageCount[] }) {
       <h2 className="mb-4 md:mt-4 md:mb-4 text-center text-xl font-bold">
         Fetch count
       </h2>
-      <div className="stats stats-vertical shadow w-60 border-2 border-accent">
+      <article className="stats stats-vertical shadow w-60 border-2 border-accent">
         {messageCount.map((message, index) => (
           <div key={index}>
             <div className="stat shadow place-items-center" key={index}>
@@ -21,7 +21,7 @@ export function FetchCount({ messageCount }: { messageCount: MessageCount[] }) {
             </div>
           </div>
         ))}
-      </div>
+      </article>
     </section>
   );
 }
