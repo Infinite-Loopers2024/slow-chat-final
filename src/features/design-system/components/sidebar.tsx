@@ -30,7 +30,7 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
             <Link href="\design-system\forms">Forms</Link>
             <Link href="\design-system\colors">Colors</Link>
             <Link href="/layout">Layout</Link>
-            <Link href="/typography">Typeography</Link>
+            <Link href="\design-system\typography">Typography</Link>
           </li>
         </ul>
       </div>
