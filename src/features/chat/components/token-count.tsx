@@ -1,7 +1,11 @@
 "use client";
 import { revalidateMessages } from "@/src/features/chat/actions";
 
-export default function TokenCount({ totalTokens }: { totalTokens: number }) {
+type Props = {
+  totalTokens: number;
+};
+
+export default function TokenCount({ totalTokens }: Props) {
   return (
     <>
       <div className="flex flex-col items-center justify-center md:flex-row md:justify-end md:mt-6">

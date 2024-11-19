@@ -1,15 +1,13 @@
 import type { Message } from "../type";
 import { chatFeature } from "../instance";
 
-export async function Message({
-  message,
-  isCurrentUser,
-  time,
-}: {
+type Props = {
   message: Message;
   isCurrentUser: boolean;
   time: string;
-}) {
+};
+
+export async function Message({ message, isCurrentUser, time }: Props) {
   const { userName, content } = message;
   const cooldown = chatFeature.service.checkIfOnCooldown(message.timestamp);
   return (

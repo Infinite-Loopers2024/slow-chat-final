@@ -1,5 +1,5 @@
 import { addMessage } from "@/src/features/chat/actions";
-import { Button } from "./buttons";
+import { Button } from "./button";
 
 export default function Form() {
   return (
