@@ -14,7 +14,7 @@ export default function Form() {
         id="content"
         name="content"
       />
-      <Button color="btn-accent" text="Send Message" type="submit" />
+      <Button style="btn-accent mr-2" text="Send Message" type="submit" />
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { messageFetchTimestamps, messages } from "@/drizzle/schema";
-import { db } from "@/src/index";
+import { db } from "@/src";
 import { count, eq } from "drizzle-orm";
 import { Message } from "./type";
 

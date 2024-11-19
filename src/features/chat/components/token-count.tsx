@@ -13,7 +13,7 @@ export default function TokenCount({ totalTokens }: Props) {
         Remaining token <strong>{totalTokens}</strong>
       </div>
       <Button
-        color="btn-accent"
+        style="btn-accent mr-2"
         text="Fetch Messages"
         onClick={() => revalidateMessages()}
       />
