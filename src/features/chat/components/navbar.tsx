@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Navbar() {
   return (
-    <nav className="navbar bg-primary">
+    <nav className="navbar bg-purple-50">
       <div className="flex-1">
         <Link className="btn btn-ghost text-lg p-1 font-bold" href=".">
           ChatChill

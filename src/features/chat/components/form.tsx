@@ -1,4 +1,5 @@
 import { addMessage } from "@/src/features/chat/actions";
+import { Button } from "./buttons";
 
 export default function Form() {
   return (
@@ -13,12 +14,7 @@ export default function Form() {
         id="content"
         name="content"
       />
-      <button
-        className="btn btn-accent m-1 w-full mb-4 md:mb-0 md:w-4/12"
-        type="submit"
-      >
-        Send message
-      </button>
+      <Button color="btn-accent" text="Send Message" />
     </form>
   );
 }
