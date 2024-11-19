@@ -24,7 +24,7 @@ export function LoginForm() {
           className="input input-bordered input-primary w-10/12 m-3"
         />
         <div className="flex justify-center items-center">
-          <Button style="btn-accent px-6 my-6" text="Join" />
+          <Button style="btn-accent px-6 my-6" text="Join" type="submit" />
         </div>
       </form>
     </div>

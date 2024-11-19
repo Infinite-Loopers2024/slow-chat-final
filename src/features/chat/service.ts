@@ -5,7 +5,7 @@ import {
   getDateOfLatestSunday,
   onCooldown,
 } from "./logic";
-import { createRepository} from "./repository";
+import { createRepository } from "./repository";
 import type { Message } from "./type";
 import { Db } from "@/src";
 
@@ -17,8 +17,7 @@ const user_id = "550e8400-e29b-41d4-a716-446655440000";
 const userName = "Peter";
 
 export function createService(db: Db) {
-
-  const repository = createRepository(db)
+  const repository = createRepository(db);
 
   return {
     async getFetchedMessages() {
@@ -39,7 +38,6 @@ export function createService(db: Db) {
         console.log(validatedMessage.error);
       }
 
-      console.log(validatedMessage.data);
       const message: Message = {
         content: validatedMessage.data!.content,
         userId: user_id,
@@ -73,10 +71,12 @@ export function createService(db: Db) {
       const allMessages = await repository.getAllMessages();
       const allFetches = await repository.getAllFetches();
 
-      const messagesPerFetch = calculateFetchedMessages(allMessages, allFetches);
+      const messagesPerFetch = calculateFetchedMessages(
+        allMessages,
+        allFetches
+      );
 
       return messagesPerFetch;
-
-    }
+    },
   };
 }

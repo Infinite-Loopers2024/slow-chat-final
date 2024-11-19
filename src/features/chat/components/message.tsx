@@ -1,5 +1,5 @@
 import type { Message } from "../type";
-import {chatService } from "../instance";
+import { chatService } from "../instance";
 
 type Props = {
   message: Message;
@@ -11,7 +11,7 @@ export async function Message({ message, isCurrentUser, time }: Props) {
   const { userName, content } = message;
   const cooldown = chatService.checkIfOnCooldown(message.timestamp);
   return (
-    <section className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
+    <article className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">
         {userName}
         <div
@@ -25,6 +25,6 @@ export async function Message({ message, isCurrentUser, time }: Props) {
         </div>
         <p>{cooldown ? "" : time}</p>
       </div>
-    </section>
+    </article>
   );
 }
