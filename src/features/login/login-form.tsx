@@ -1,3 +1,4 @@
+import { Button } from "../chat/components/button";
 import { signIn } from "./actions";
 
 export function LoginForm() {
@@ -23,7 +24,7 @@ export function LoginForm() {
           className="input input-bordered input-primary w-10/12 m-3"
         />
         <div className="flex justify-center items-center">
-          <button className="btn btn-accent px-6 my-6">Join</button>
+          <Button color="btn-accent px-6 my-6" text="Join" />
         </div>
       </form>
     </div>
