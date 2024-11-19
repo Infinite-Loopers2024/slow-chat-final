@@ -1,7 +1,7 @@
 import { chatFeature } from "../instance";
+import Form from "./form";
 import { Message as MessageComponent } from "./message";
 import TokenCount from "./token-count";
-
 
 export default async function MessageBoard() {
   const currentUserName = "Peter";
@@ -24,6 +24,7 @@ export default async function MessageBoard() {
         ))}
       </div>
       <TokenCount totalTokens={totalTokens} />
+      <Form />
     </>
   );
 }
