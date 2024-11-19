@@ -1,10 +1,10 @@
-import { chatFeature } from "../instance";
+import {chatService } from "../instance";
 import { Message as MessageComponent } from "./message";
 
 
 export async function Messages(){
   const currentUserName = "Peter";
-  const messages = await chatFeature.service.getFetchedMessages();
+  const messages = await chatService.getFetchedMessages();
 
  return (
    <div

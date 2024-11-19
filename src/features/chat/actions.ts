@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { chatFeature } from "./instance";
+import { chatService } from "./instance";
 
 const currentUserId = "550e8400-e29b-41d4-a716-446655440000";
 
@@ -10,15 +10,15 @@ export async function addMessage(formData: FormData) {
   if (!content) {
     return;
   }
-  await chatFeature.service.sendMessage(content);
+  await chatService.sendMessage(content);
 }
 
 export async function revalidateMessages() {
-  const tokens = await chatFeature.service.getTokens(currentUserId);
+  const tokens = await chatService.getTokens(currentUserId);
   if (!tokens) {
     return;
   }
 
-  await chatFeature.service.setFetchedTime(currentUserId);
+  await chatService.setFetchedTime(currentUserId);
   revalidatePath("/chat");
 }

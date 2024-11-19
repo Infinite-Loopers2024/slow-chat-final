@@ -1,5 +1,5 @@
 import type { Message } from "../type";
-import { chatFeature } from "../instance";
+import {chatService } from "../instance";
 
 type Props = {
   message: Message;
@@ -9,7 +9,7 @@ type Props = {
 
 export async function Message({ message, isCurrentUser, time }: Props) {
   const { userName, content } = message;
-  const cooldown = chatFeature.service.checkIfOnCooldown(message.timestamp);
+  const cooldown = chatService.checkIfOnCooldown(message.timestamp);
   return (
     <section className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">

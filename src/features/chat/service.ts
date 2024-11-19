@@ -5,8 +5,9 @@ import {
   getDateOfLatestSunday,
   onCooldown,
 } from "./logic";
-import { Repository } from "./repository";
+import { createRepository} from "./repository";
 import type { Message } from "./type";
+import { Db } from "@/src";
 
 const Message = z.object({
   content: z.string(),
@@ -15,7 +16,10 @@ const Message = z.object({
 const user_id = "550e8400-e29b-41d4-a716-446655440000";
 const userName = "Peter";
 
-export function createService(repository: Repository) {
+export function createService(db: Db) {
+
+  const repository = createRepository(db)
+
   return {
     async getFetchedMessages() {
       const messages = await repository.getAllMessages();
