@@ -1,15 +1,12 @@
 import { chatFeature } from "../instance";
-import type { Message } from "../type";
 import { Message as MessageComponent } from "./message";
 import TokenCount from "./token-count";
 
-type Props = {
-  messages: Message[];
-};
 
-export default async function MessageBoard({ messages }: Props) {
+export default async function MessageBoard() {
   const currentUserName = "Peter";
   const userId = "550e8400-e29b-41d4-a716-446655440000";
+  const messages = await chatFeature.service.getFetchedMessages();
   const totalTokens = await chatFeature.service.getTokens(userId);
   return (
     <>
