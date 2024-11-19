@@ -1,14 +1,11 @@
-import { Message } from "../type";
+import { chatFeature } from "../instance";
 import { Message as MessageComponent } from "./message";
 
-type Props = {
- messages: Message[]
-}
 
-
-export function Messages({messages}: Props){
+export async function Messages(){
   const currentUserName = "Peter";
-  
+  const messages = await chatFeature.service.getFetchedMessages();
+
  return (
    <div
      id="message-placeholder"
