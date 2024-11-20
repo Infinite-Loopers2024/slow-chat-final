@@ -1,5 +1,5 @@
 import { chatService } from "../instance";
-import Form from "./form";
+import MessageForm from "./message-form";
 import { Messages } from "./messages";
 import TokenCount from "./token-count";
 
@@ -11,7 +11,7 @@ export default async function MessageBoard() {
     <div className="container mx-auto p-2 rounded-md bg-base-200 mt-2 h-[85lvh] prose">
       <Messages />
       <TokenCount totalTokens={totalTokens} />
-      <Form />
+      <MessageForm />
     </div>
   );
 }

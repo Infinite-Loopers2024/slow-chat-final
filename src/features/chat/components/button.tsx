@@ -12,7 +12,7 @@ export function Button({ style, text, type = "button", onClick }: Props) {
     <button
       type={type}
       onClick={onClick}
-      className={`btn ${style} w-full md:w-48 rounded-lg`}
+      className={`btn ${style} w-full md:w-48 rounded-md`}
     >
       {text}
     </button>

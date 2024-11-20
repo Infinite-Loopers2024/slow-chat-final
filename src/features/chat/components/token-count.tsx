@@ -1,5 +1,5 @@
 "use client";
-import { revalidateMessages } from "@/src/features/chat/actions";
+import { revalidateMessages } from "../actions";
 import { Button } from "./button";
 
 type Props = {

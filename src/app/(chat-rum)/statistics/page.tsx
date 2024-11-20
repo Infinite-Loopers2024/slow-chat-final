@@ -1,4 +1,4 @@
-import { Stats } from "@/src/features/chat/components/stats";
+import { Stats } from "@/src/features/";
 
 export default function StatisticsPage() {
   return (

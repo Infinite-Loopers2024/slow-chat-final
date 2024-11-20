@@ -1,4 +1,4 @@
-import { Sidebar } from "@/src/features/design-system/components/sidebar";
+import { Sidebar } from "@/src/features/";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (

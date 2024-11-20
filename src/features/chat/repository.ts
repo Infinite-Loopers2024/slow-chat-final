@@ -3,31 +3,24 @@ import { Db } from "@/src";
 import { count, eq } from "drizzle-orm";
 import { Message } from "./type";
 
-
-
-export function createRepository(
-  db: Db
-) {
+export function createRepository(db: Db) {
   return {
     async getAllMessages() {
       return await db.select().from(messages);
     },
+
     async sendMessage(message: Message) {
       await db.insert(messages).values(message);
     },
-    async getUser(userId: string) {
-      return await db
-        .select()
-        .from(messages)
-        .where(eq(messages.userId, userId));
-    },
-    async setFetchedTime(userId: string) {
+
+    async setFetchTime(userId: string) {
       const newValues = {
         userId: userId,
         timestamp: new Date().toISOString(),
       };
       await db.insert(messageFetchTimestamps).values(newValues);
     },
+
     async getLastFetchedDate(userId: string) {
       try {
         const timestamps = await db
@@ -42,13 +35,13 @@ export function createRepository(
       }
     },
 
-    async getAllFetches() {
+    async getAllTimestamps() {
       return await db
         .select({ timestamp: messageFetchTimestamps.timestamp })
         .from(messageFetchTimestamps);
     },
 
-    async getTimestamps(userId: string) {
+    async getUserTimestamps(userId: string) {
       const timestamps = await db
         .select({ timestamp: messageFetchTimestamps.timestamp })
         .from(messageFetchTimestamps)
@@ -59,7 +52,8 @@ export function createRepository(
       });
       return timestamp;
     },
-    async getAllUserMessages() {
+
+    async getAllUsersMessageCount() {
       const numberMessagesPerUser = await db
         .select({ userName: messages.userName, count: count(messages.id) })
         .from(messages)

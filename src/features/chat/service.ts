@@ -46,13 +46,14 @@ export function createService(db: Db) {
       };
       repository.sendMessage(message);
     },
-    async setFetchedTime(userId: string) {
-      repository.setFetchedTime(userId);
+    async setFetchTime(userId: string) {
+      repository.setFetchTime(userId);
     },
+
     async getTokens(userId: string) {
       const currentDate = new Date();
       const todaysDate = new Date();
-      const fetchedTimestamps = await repository.getTimestamps(userId);
+      const fetchedTimestamps = await repository.getUserTimestamps(userId);
       const latestSunday = getDateOfLatestSunday(currentDate);
       const latestFetchedDate: string[] = fetchedTimestamps!.filter(
         (timestamps) => latestSunday < timestamps
@@ -60,20 +61,23 @@ export function createService(db: Db) {
       const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
       return totalTokens;
     },
+
     checkIfOnCooldown(timestamp: string) {
       const currentDate = new Date();
       return onCooldown(timestamp, currentDate);
     },
+
     async getAllUserMessages() {
-      return await repository.getAllUserMessages();
+      return await repository.getAllUsersMessageCount();
     },
+
     async getAllMessagesPerFetch() {
       const allMessages = await repository.getAllMessages();
-      const allFetches = await repository.getAllFetches();
+      const allTimestamps = await repository.getAllTimestamps();
 
       const messagesPerFetch = calculateFetchedMessages(
         allMessages,
-        allFetches
+        allTimestamps
       );
 
       return messagesPerFetch;
