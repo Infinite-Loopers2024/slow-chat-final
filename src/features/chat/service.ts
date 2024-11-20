@@ -29,7 +29,7 @@ export function createService(db: Db) {
       const currentDate = new Date();
 
       const validMessages = fetchedMessages.map((message) => {
-        if (isAvailable(message.timestamp, currentDate)) {
+        if (!isAvailable(message.timestamp, currentDate)) {
           message.content = "";
         }
         return message;

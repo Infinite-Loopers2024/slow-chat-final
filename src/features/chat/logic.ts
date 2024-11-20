@@ -1,5 +1,9 @@
 import { FetchTimestamp, Message } from "./type";
 
+export function timezone(date: Date) {
+  return date.toLocaleString("sv-SE", { timeZone: "Europe/Stockholm" });
+}
+
 export function isAvailable(timeStamp: string, date: Date) {
   date.setHours(date.getHours() - 1);
   return timeStamp < date.toISOString().replace("T", " ").replace("Z", "");
@@ -78,7 +82,7 @@ export function calculateFetchedMessages(
       if (i === 0) {
         if (allMessages[n].timestamp < allFetches[i].timestamp) {
           if (
-            isAvailable(
+            !isAvailable(
               allMessages[n].timestamp,
               new Date(allFetches[i].timestamp)
             )
@@ -93,7 +97,7 @@ export function calculateFetchedMessages(
           allMessages[n].timestamp > allFetches[i - 1].timestamp
         ) {
           if (
-            isAvailable(
+            !isAvailable(
               allMessages[n].timestamp,
               new Date(allFetches[i].timestamp)
             )
