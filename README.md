@@ -10,11 +10,11 @@ The Slow Messaging App is designed to:
 * Display messages on cooldown with metadata such as the author and timestamp but without their content.
 
 ## Tech Stack
-*Frontend: Next.js
-*Backend: Drizzle ORM, PostgreSQL
-*Validation: Zod
-*Language: TypeScript
-*Linting: ESLint
+- Frontend: Next.js
+- Backend: Drizzle ORM, PostgreSQL
+- Validation: Zod
+- Language: TypeScript
+- Linting: ESLint
 
 ## Features
 - Message Cooldown: Messages sent are only fully visible after a 1-hour cooldown.
