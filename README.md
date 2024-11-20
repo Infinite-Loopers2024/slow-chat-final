@@ -1,22 +1,22 @@
-###Slow Messaging App
+# Slow Messaging App
 
 This project is a full-stack slow-messaging app built as part of a final weekend assignment. The app encourages minimal usage by restricting message fetching and incorporating cooldown periods for messages. Below is an overview of the project, its features, challenges, and highlights.
 
-##Overview
+## Overview
 
 The Slow Messaging App is designed to:
 * Limit user interaction by providing only a fixed number of message-fetch tokens daily and weekly.
 * Introduce a cooldown mechanism where messages are unavailable for a set period after being sent.
 * Display messages on cooldown with metadata such as the author and timestamp but without their content.
 
-Tech Stack
+## Tech Stack
 *Frontend: Next.js
 *Backend: Drizzle ORM, PostgreSQL
 *Validation: Zod
 *Language: TypeScript
 *Linting: ESLint
 
-##Features
+## Features
 - Message Cooldown: Messages sent are only fully visible after a 1-hour cooldown.
 - Token Management:
   1 daily fetch token per day (reset at 00:00 UTC).
@@ -28,7 +28,7 @@ Tech Stack
 - Responsive Design: Optimized for both desktop and mobile devices.
 - Semantic HTML: Adheres to best practices for accessibility and SEO.
 
-##Project Planning
+## Project Planning
 
 A GitHub project board was used for sprint planning. The work was divided into four main sprints:
 Sprint Goals
@@ -51,24 +51,27 @@ Sprint Goals
   Refine UI and ensure styling consistency.
   Conduct end-to-end testing.
 
-##Challenges
+## Challenges
 
-1. Cooldown and Token Management Logic
+- Cooldown and Token Management Logic
 
-Ensuring messages respect cooldown rules while tokens are consumed correctly required careful thought about what data to store versus calculate dynamically. Pure functions simplified testing this logic. 2. Balancing Features and Time Constraints
+Ensuring messages respect cooldown rules while tokens are consumed correctly required careful thought about what data to store versus calculate dynamically. Pure functions simplified testing this logic. 
+- Balancing Features and Time Constraints
 
-Given the time constraints, prioritizing essential features like authentication and cooldown logic over advanced UI components was critical. 3. Responsive Design
+Given the time constraints, prioritizing essential features like authentication and cooldown logic over advanced UI components was critical. 
+
+- Responsive Design
 
 Designing a layout that works seamlessly across mobile and desktop required iterations and testing.
 
-##Highlights
+## Highlights
 
 - Strong Testing Foundation: All business logic is tested with clear, descriptive test cases.
 - Clean Code and Structure: The project follows a modular file structure for scalability and maintainability.
 - Effective Token Management: Smooth implementation of daily and weekly token refresh mechanics.
 - Statistics Insights: The statistics page provides meaningful insights into user behavior without requiring advanced visualizations.
 
-Installation
+## Installation
 
 Clone the repository:
 
