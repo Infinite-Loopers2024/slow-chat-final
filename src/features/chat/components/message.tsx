@@ -1,15 +1,12 @@
 import type { Message } from "../type";
-import { chatService } from "../instance";
 
 type Props = {
   message: Message;
   isCurrentUser: boolean;
-  time: string;
 };
 
-export async function Message({ message, isCurrentUser, time }: Props) {
+export async function Message({ message, isCurrentUser }: Props) {
   const { userName, content } = message;
-  const cooldown = chatService.checkIfOnCooldown(message.timestamp);
   return (
     <article className={isCurrentUser ? "chat chat-start" : "chat chat-end"}>
       <div className="chat-header">
@@ -21,9 +18,9 @@ export async function Message({ message, isCurrentUser, time }: Props) {
               : "chat-bubble chat-bubble-secondary"
           }
         >
-          <p>{cooldown ? "" : content}</p>
+          <p>{content}</p>
         </div>
-        <p>{cooldown ? "" : time}</p>
+        <p>{message.timestamp.slice(11, 16)}</p>
       </div>
     </article>
   );

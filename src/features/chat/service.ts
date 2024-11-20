@@ -26,8 +26,16 @@ export function createService(db: Db) {
       const fetchedMessages = messages.filter(
         (message) => message.timestamp < latestFetchedDate!
       );
+      const currentDate = new Date();
 
-      return fetchedMessages;
+      const validMessages = fetchedMessages.map((message) => {
+        if (onCooldown(message.timestamp, currentDate)) {
+          message.content = "";
+        }
+        return message;
+      });
+
+      return validMessages;
     },
     async sendMessage(content: string) {
       const timeStamp = new Date().toISOString();

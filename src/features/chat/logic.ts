@@ -1,6 +1,6 @@
 import { FetchTimestamp, Message } from "./type";
 
-export function onCooldown(timeStamp: string, date: Date) {
+export function isAvailable(timeStamp: string, date: Date) {
   date.setHours(date.getHours() - 1);
   return timeStamp > date.toISOString().replace("T", " ").replace("Z", "");
 }

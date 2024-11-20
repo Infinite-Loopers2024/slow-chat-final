@@ -15,7 +15,6 @@ export async function Messages() {
           key={index}
           message={message}
           isCurrentUser={message.userName === currentUserName}
-          time={message.timestamp.slice(11, 16)}
         />
       ))}
     </section>
