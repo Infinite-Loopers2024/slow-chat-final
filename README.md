@@ -1,15 +1,19 @@
 # Slow Messaging App
 
+<img src="./image.png" alt="hero image">
+
 This project is a full-stack slow-messaging app built as part of a final weekend assignment. The app encourages minimal usage by restricting message fetching and incorporating cooldown periods for messages. Below is an overview of the project, its features, challenges, and highlights.
 
 ## Overview
 
 The Slow Messaging App is designed to:
-* Limit user interaction by providing only a fixed number of message-fetch tokens daily and weekly.
-* Introduce a cooldown mechanism where messages are unavailable for a set period after being sent.
-* Display messages on cooldown with metadata such as the author and timestamp but without their content.
+
+- Limit user interaction by providing only a fixed number of message-fetch tokens daily and weekly.
+- Introduce a cooldown mechanism where messages are unavailable for a set period after being sent.
+- Display messages on cooldown with metadata such as the author and timestamp but without their content.
 
 ## Tech Stack
+
 - Frontend: Next.js
 - Backend: Drizzle ORM, PostgreSQL
 - Validation: Zod
@@ -17,6 +21,7 @@ The Slow Messaging App is designed to:
 - Linting: ESLint
 
 ## Features
+
 - Message Cooldown: Messages sent are only fully visible after a 1-hour cooldown.
 - Token Management:
   1 daily fetch token per day (reset at 00:00 UTC).
@@ -55,10 +60,11 @@ Sprint Goals
 
 - Cooldown and Token Management Logic
 
-Ensuring messages respect cooldown rules while tokens are consumed correctly required careful thought about what data to store versus calculate dynamically. Pure functions simplified testing this logic. 
+Ensuring messages respect cooldown rules while tokens are consumed correctly required careful thought about what data to store versus calculate dynamically. Pure functions simplified testing this logic.
+
 - Balancing Features and Time Constraints
 
-Given the time constraints, prioritizing essential features like authentication and cooldown logic over advanced UI components was critical. 
+Given the time constraints, prioritizing essential features like authentication and cooldown logic over advanced UI components was critical.
 
 - Responsive Design
 
