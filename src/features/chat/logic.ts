@@ -2,7 +2,7 @@ import { FetchTimestamp, Message } from "./type";
 
 export function isAvailable(timeStamp: string, date: Date) {
   date.setHours(date.getHours() - 1);
-  return timeStamp > date.toISOString().replace("T", " ").replace("Z", "");
+  return timeStamp < date.toISOString().replace("T", " ").replace("Z", "");
 }
 
 export function calculateDailyTokens(
@@ -78,7 +78,7 @@ export function calculateFetchedMessages(
       if (i === 0) {
         if (allMessages[n].timestamp < allFetches[i].timestamp) {
           if (
-            onCooldown(
+            isAvailable(
               allMessages[n].timestamp,
               new Date(allFetches[i].timestamp)
             )
@@ -93,7 +93,7 @@ export function calculateFetchedMessages(
           allMessages[n].timestamp > allFetches[i - 1].timestamp
         ) {
           if (
-            onCooldown(
+            isAvailable(
               allMessages[n].timestamp,
               new Date(allFetches[i].timestamp)
             )

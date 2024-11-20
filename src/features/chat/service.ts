@@ -3,7 +3,7 @@ import {
   calculateFetchedMessages,
   calculateTotalTokens,
   getDateOfLatestSunday,
-  onCooldown,
+  isAvailable,
 } from "./logic";
 import { createRepository } from "./repository";
 import type { Message } from "./type";
@@ -29,7 +29,7 @@ export function createService(db: Db) {
       const currentDate = new Date();
 
       const validMessages = fetchedMessages.map((message) => {
-        if (onCooldown(message.timestamp, currentDate)) {
+        if (isAvailable(message.timestamp, currentDate)) {
           message.content = "";
         }
         return message;
@@ -68,11 +68,6 @@ export function createService(db: Db) {
       );
       const totalTokens = calculateTotalTokens(latestFetchedDate, todaysDate);
       return totalTokens;
-    },
-
-    checkIfOnCooldown(timestamp: string) {
-      const currentDate = new Date();
-      return onCooldown(timestamp, currentDate);
     },
 
     async getAllUserMessages() {
